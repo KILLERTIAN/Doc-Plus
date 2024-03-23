@@ -1,0 +1,73 @@
+[
+    {
+      "did": "D001",
+      "name": "Dr. Samantha Johnson",
+      "age": 40,
+      "qualifications": "MD, MBBS",
+      "gender": "Female"
+    },
+    {
+      "did": "D002",
+      "name": "Dr. Michael Smith",
+      "age": 55,
+      "qualifications": "MD, PhD",
+      "gender": "Male"
+    },
+    {
+      "did": "D003",
+      "name": "Dr. Emily Brown",
+      "age": 38,
+      "qualifications": "MD, MSc",
+      "gender": "Female"
+    },
+    {
+      "did": "D004",
+      "name": "Dr. Ethan Williams",
+      "age": 45,
+      "qualifications": "MD, DNB",
+      "gender": "Male"
+    },
+    {
+      "did": "D005",
+      "name": "Dr. Sophia Garcia",
+      "age": 32,
+      "qualifications": "MD, BDS",
+      "gender": "Female"
+    },
+    {
+      "did": "D006",
+      "name": "Dr. Daniel Martinez",
+      "age": 50,
+      "qualifications": "MD, MS",
+      "gender": "Male"
+    },
+    {
+      "did": "D007",
+      "name": "Dr. Olivia Nguyen",
+      "age": 42,
+      "qualifications": "MD, MCh",
+      "gender": "Female"
+    },
+    {
+      "did": "D008",
+      "name": "Dr. Robert Lee",
+      "age": 48,
+      "qualifications": "MD, FRCS",
+      "gender": "Male"
+    },
+    {
+      "did": "D009",
+      "name": "Dr. Ava Hernandez",
+      "age": 35,
+      "qualifications": "MD, MRCP",
+      "gender": "Female"
+    },
+    {
+      "did": "D010",
+      "name": "Dr. Ethan Perez",
+      "age": 37,
+      "qualifications": "MD, DM",
+      "gender": "Male"
+    }
+  ]
+  
