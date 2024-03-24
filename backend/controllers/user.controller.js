@@ -2,85 +2,76 @@ import User from "../models/user.model.js";
 import createError from "../utils/createError.js";
 
 export const createUser = async (req, res, next) => {
-  const newUser = new User({
-    ...req.body,
-  });
+  const { pid, name, age, gender } = req.body;
 
   try {
+    const newUser = new User({
+      pid,
+      name,
+      age,
+      gender
+    });
+
     const savedUser = await newUser.save();
     res.status(201).json(savedUser);
   } catch (err) {
-    next(err);
+    next(err); // Pass the error to the error handling middleware
   }
 };
 
 export const deleteUser = async (req, res, next) => {
-  // const user = await User.findById(req.params.id);
-
-  // if (req.userId !== user._id.toString()) {
-  //   return next(createError(403, "You can delete only your account!"));
-  // }
-  await User.findByIdAndDelete(req.params.id);
-  res.status(200).send("deleted.");
+  try {
+    await User.findByIdAndDelete(req.params.id);
+    res.status(200).send("User deleted.");
+  } catch (err) {
+    next(err); // Pass the error to the error handling middleware
+  }
 };
 
 export const updateUser = async (req, res, next) => {
-  const userId = req.params.id;
-  const updatedFields = req.body;
+  const { pid, name, age, gender } = req.body;
 
   try {
-    // Update the user based on the specified ID
-    const updatedUser = await User.findOneAndUpdate(
-      { _id: userId },
-      { $set: updatedFields },
-      { new: true } // This option returns the updated document
+    const updatedUser = await User.findByIdAndUpdate(
+      req.params.id,
+      { pid, name, age, gender },
+      { new: true }
     );
 
     if (!updatedUser) {
-      return res.status(404).send("User not found");
+      return res.status(404).send("User not found.");
     }
 
     res.status(200).json(updatedUser);
   } catch (err) {
-    next(err);
+    next(err); // Pass the error to the error handling middleware
   }
 };
 
 export const getUser = async (req, res, next) => {
   try {
-    const userById = await User.findById(req.params.id);
-    if (!userById) next(createError(404, "User not found!"));
-    res.status(200).send(userById);
-  } catch (error) {
-    next(error);
+    const user = await User.findById(req.params.id);
+
+    if (!user) {
+      return res.status(404).send("User not found.");
+    }
+
+    res.status(200).json(user);
+  } catch (err) {
+    next(err); // Pass the error to the error handling middleware
   }
 };
 
 export const getUsers = async (req, res, next) => {
-  const q = req.query;
-  const filters = {
-    ...(q.available && { available: q.available }),
-    ...(q.gender && { gender: q.gender }),
-    ...(q.domain && { domain: q.domain }),
-  };
-
-  if (q.search) {
-    filters.$or = [
-      { first_name: { $regex: q.search, $options: "i" } },
-      { last_name: { $regex: q.search, $options: "i" } },
-    ];
-  }
-  // Pagination options
-  const page = parseInt(q.page) || 1;
-  const limit = parseInt(q.limit) || 20;
-  const skip = (page - 1) * limit;
+  const { page = 1, limit = 20 } = req.query;
 
   try {
-    const usersList = await User.find(filters).skip(skip).limit(limit);
-    if (!usersList || usersList.length === 0)
-      next(createError(404, "User not found!"));
-    res.status(200).send(usersList);
-  } catch (error) {
-    next(error);
+    const users = await User.find()
+      .skip((page - 1) * limit)
+      .limit(parseInt(limit));
+
+    res.status(200).json(users);
+  } catch (err) {
+    next(err); // Pass the error to the error handling middleware
   }
 };
