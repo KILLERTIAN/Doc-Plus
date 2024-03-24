@@ -1,0 +1,114 @@
+.dashboardMainContainer {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.dashboardContainer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 20px;
+    /* height: auto; */
+    border: 1.5px solid #ddd;
+    border-radius: 10px;
+    flex-direction: column;
+}
+
+.userInfoContainer {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    width: 100%;
+    height: 120px;
+    border-bottom: 1.5px solid #ddd;
+    justify-content: space-between;
+}
+
+.profileImageName {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+}
+
+.profileImageSection {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+
+    width: 120px;
+    /* height: 100px; */
+}
+
+.profileImageSection img {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+}
+
+.userNameId {
+    display: flex;
+    position: relative;
+    /* align-items: center; */
+    justify-content: center;
+    flex-direction: column;
+}
+
+.userNameId span {
+    font-size: 2em;
+}
+
+.userDetails {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.userDetails ul{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin: 10px;
+}
+.userDetails ul li {
+    list-style: none;
+    margin: 5px;
+    font-weight: 600;
+}
+.userHistorySection{
+    display: flex;
+    position: relative;
+    width: 100%;
+    height:100%;
+    ;
+}
+.userSideBar{
+    display: flex;
+    position: relative;
+    width: 250px;
+    /* height: 100%; */
+    padding: 20px;
+    border-right: 1.5px solid #ddd;
+}
+.userPastRecords{
+    display: flex;
+    position: relative;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    /* height: 100%; */
+}
+.userPastRecords h2{
+    margin: 10px;
+    font-size: 1.5em;
+}
