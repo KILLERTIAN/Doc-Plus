@@ -5,7 +5,7 @@ import {
   getUsers,
   deleteUser,
   updateUser,
-} from "../controllers/user.controller.js";
+} from "../controllers/patient.controller.js";
 
 const router = express.Router();
 
@@ -16,11 +16,4 @@ router.put("/:id", updateUser);
 router.delete("/:id", deleteUser);
 
 export default router;
-// import express from 'express';
-// import { getUsers } from '../controllers/user.controller.js';
 
-// const router = express.Router();
-
-// router.get('/', getUsers);
-
-// export default router;
