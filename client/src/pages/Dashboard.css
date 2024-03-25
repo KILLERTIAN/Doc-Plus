@@ -73,25 +73,29 @@
     align-items: center;
     justify-content: center;
 }
-.userDetails ul{
+
+.userDetails ul {
     display: flex;
     position: relative;
     flex-direction: column;
     margin: 10px;
 }
+
 .userDetails ul li {
     list-style: none;
     margin: 5px;
     font-weight: 600;
 }
-.userHistorySection{
+
+.userHistorySection {
     display: flex;
     position: relative;
     width: 100%;
-    height:100%;
+    height: 100%;
     ;
 }
-.userSideBar{
+
+.userSideBar {
     display: flex;
     position: relative;
     width: 250px;
@@ -99,16 +103,58 @@
     padding: 20px;
     border-right: 1.5px solid #ddd;
 }
-.userPastRecords{
+
+.userPastRecords {
     display: flex;
     position: relative;
     width: 100%;
     flex-direction: column;
     align-items: center;
+    overflow-y: scroll;
     /* justify-content: center; */
     /* height: 100%; */
 }
-.userPastRecords h2{
+
+.userPastRecords h2 {
     margin: 10px;
     font-size: 1.5em;
+}
+
+.accordionContainer {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 94%; /* Take full width */
+    margin-bottom: 10px;
+    
+    
+}
+.fiterTime{
+    margin: 10px;
+    font-size: 1.2em;
+}
+.accordionSummary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 20px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+.accordionSummary p{
+    display: flex;
+    align-items: center;
+}
+.accordianDetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px; /* Add padding for content */
+    background-color: #f9f9f9; /* Add background color for better visibility */
+    border-radius: 5px; /* Add border radius for rounded corners */
+}
+.accordionArrow{
+margin:5px 10px;
 }
