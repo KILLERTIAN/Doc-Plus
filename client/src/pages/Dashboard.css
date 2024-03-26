@@ -124,15 +124,18 @@
     display: flex;
     position: relative;
     flex-direction: column;
-    width: 94%; /* Take full width */
+    width: 94%;
+    /* Take full width */
     margin-bottom: 10px;
-    
-    
+
+
 }
-.fiterTime{
+
+.fiterTime {
     margin: 10px;
     font-size: 1.2em;
 }
+
 .accordionSummary {
     display: flex;
     flex-direction: row;
@@ -142,19 +145,26 @@
     border: 1.5px solid #ddd;
     border-radius: 8px;
     margin-top: 10px;
+    cursor: pointer;
 }
-.accordionSummary p{
+
+.accordionSummary p {
     display: flex;
     align-items: center;
 }
+
 .accordianDetails {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 10px; /* Add padding for content */
-    background-color: #f9f9f9; /* Add background color for better visibility */
-    border-radius: 5px; /* Add border radius for rounded corners */
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+
 }
-.accordionArrow{
-margin:5px 10px;
+
+.accordionArrow {
+    margin: 5px 10px;
+    transition: transform 0.83s ease-in-out; /* Add transition for arrow rotation */
 }
+
