@@ -9,11 +9,11 @@ import {
 
 const router = express.Router();
 
-router.get("/single/:id", getUser);
-router.get("/", getUsers);
-router.post("/", createUser);
-router.put("/:id", updateUser);
-router.delete("/:id", deleteUser);
+// Use Firebase UID instead of patient ID in routes
+router.get("/:uid", getUser); // Fetch user by UID
+router.get("/", getUsers); // Fetch all users
+router.post("/", createUser); // Create a new user
+router.put("/:uid", updateUser); // Update user by UID
+router.delete("/:uid", deleteUser); // Delete user by UID
 
 export default router;
-

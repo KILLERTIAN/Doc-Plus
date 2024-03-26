@@ -9,8 +9,16 @@ const extractPatientFields = (body) => {
 
 export const createUser = async (req, res, next) => {
   try {
-    const patientFields = extractPatientFields(req.body);
-    const newUser = new Patient(patientFields);
+    const { p_id, p_name, p_age, p_gender, p_bloodgroup, p_address, firebaseUid } = req.body;
+    const newUser = new Patient({
+      p_id,
+      p_name,
+      p_age,
+      p_gender,
+      p_bloodgroup,
+      p_address,
+      firebaseUid // Include Firebase UID in the patient data
+    });
     const savedUser = await newUser.save();
     res.status(201).json(savedUser);
   } catch (err) {
@@ -29,10 +37,10 @@ export const deleteUser = async (req, res, next) => {
 
 export const updateUser = async (req, res, next) => {
   try {
-    const patientFields = extractPatientFields(req.body);
+    const { p_id, p_name, p_age, p_gender, p_bloodgroup, p_address } = req.body;
     const updatedUser = await Patient.findByIdAndUpdate(
       req.params.id,
-      patientFields,
+      { p_id, p_name, p_age, p_gender, p_bloodgroup, p_address },
       { new: true }
     );
 
@@ -61,13 +69,10 @@ export const getUser = async (req, res, next) => {
 };
 
 export const getUsers = async (req, res, next) => {
-  const { page = 1, limit = 20 } = req.query;
+  const { firebaseUid } = req.query;
 
   try {
-    const users = await Patient.find()
-      .skip((page - 1) * limit)
-      .limit(parseInt(limit));
-
+    const users = await Patient.find({ firebaseUid });
     res.status(200).json(users);
   } catch (err) {
     next(err);
