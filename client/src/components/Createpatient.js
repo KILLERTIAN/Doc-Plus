@@ -2,16 +2,19 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './Createpatient.css';
+import { useAuth } from '../contexts/AuthContext';
 
 function Createpatient() {
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
+  const { currentUser } = useAuth(); // Get currentUser from useAuth hook
   const [patient, setPatient] = useState({
     p_id: '',
     p_name: '',
     p_age: 0,
     p_gender: '',
     p_bloodgroup: '',
-    p_address: ''
+    p_address: '',
+    firebaseUid: currentUser ? currentUser.uid : '' // Include Firebase UID
   });
 
   const handleChange = (e) => {
@@ -33,9 +36,10 @@ function Createpatient() {
         p_age: 0,
         p_gender: '',
         p_bloodgroup: '',
-        p_address: ''
+        p_address: '',
+        firebaseUid: currentUser ? currentUser.uid : '' // Include Firebase UID
       });
-      navigate('/dashboard'); // Redirect to dashboard after successful submission
+      navigate('/dashboard');
     } catch (error) {
       console.error('Error creating patient:', error);
       alert('An error occurred. Please try again.');

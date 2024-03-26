@@ -4,21 +4,27 @@ import Filter from '../components/Filter.js';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
+import { useAuth } from '../contexts/AuthContext.js'; // Import the useAuth hook
 
 function Dashboard() {
+  const { currentUser } = useAuth(); // Access the current user object from the auth context
   const [patient, setPatient] = useState(null);
   const [doctors, setDoctors] = useState([]);
   const [interactions, setInteractions] = useState([]);
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    console.log('Current User:', currentUser);
+    if (currentUser) {
+      // Fetch data only if currentUser exists
+      fetchData(currentUser.uid); // Pass the Firebase UID to the fetchData function
+    }
+  }, [currentUser]);
 
-  const fetchData = async () => {
+  const fetchData = async (firebaseUid) => {
     try {
-      // Fetch patient data
-      const patientResponse = await axios.get('http://localhost:8000/backend/patients');
-      const currentPatient = patientResponse.data[1]; // Assuming the first patient in the response data is displayed
+      // Fetch patient data based on Firebase UID
+      const patientResponse = await axios.get(`http://localhost:8000/backend/patients?firebaseUid=${firebaseUid}`);
+      const currentPatient = patientResponse.data[0]; // Assuming only one patient is associated with the user
       setPatient(currentPatient);
 
       // Fetch interactions data filtered by patient ID
@@ -91,22 +97,19 @@ function Dashboard() {
             <div className="accordionContainer">
               {interactions.map(interaction => (
                 <div key={interaction._id}>
-                    <div className="fiterTime">
-                  {new Date(interaction.meeting_date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: '2-digit',
-                    day: '2-digit'
-                  })}
-                </div>
+                  <div className="fiterTime">
+                    {new Date(interaction.meeting_date).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit'
+                    })}
+                  </div>
                   <div className="accordionSummary" onClick={() => toggleDetails(interaction._id)}>
                     <p>{getDoctorInfo(interaction.d_id)}</p>
                     <p>{interaction.hospital}
-                    <FontAwesomeIcon className="accordionArrow" icon={interaction.open ? faCaretUp : faCaretDown} />
+                      <FontAwesomeIcon className="accordionArrow" icon={interaction.open ? faCaretUp : faCaretDown} />
                     </p>
-                   
-                    
                   </div>
-                  
                   {interaction.open && (
                     <div className="accordianDetails">
                       <p>Symptoms: {interaction.symptoms.join(', ')}</p>
