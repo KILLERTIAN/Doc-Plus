@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { auth } from "../firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 const AuthContext = React.createContext();
 
@@ -34,11 +34,22 @@ export function AuthProvider({ children }) {
     setLoading(false);
   }
 
+  async function logout() {
+    try {
+      await signOut(auth);
+      setCurrentUser(null);
+      setUserLoggedIn(false);
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  }
+
   const value = {
     userLoggedIn,
     isEmailUser,
     currentUser,
-    setCurrentUser
+    setCurrentUser,
+    logout // Add logout function to the context value
   };
 
   return (
