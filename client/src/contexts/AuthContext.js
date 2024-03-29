@@ -15,22 +15,25 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, initializeUser);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        initializeUser(user);
+      } else {
+        setCurrentUser(null);
+        setUserLoggedIn(false);
+        setLoading(false);
+      }
+    });
     return unsubscribe;
   }, []);
 
   async function initializeUser(user) {
-    if (user) {
-      setCurrentUser({ ...user });
-      const isEmail = user.providerData.some(
-        (provider) => provider.providerId === "password"
-      );
-      setIsEmailUser(isEmail);
-      setUserLoggedIn(true);
-    } else {
-      setCurrentUser(null);
-      setUserLoggedIn(false);
-    }
+    setCurrentUser(user);
+    const isEmail = user.providerData.some(
+      (provider) => provider.providerId === "password"
+    );
+    setIsEmailUser(isEmail);
+    setUserLoggedIn(true);
     setLoading(false);
   }
 
@@ -48,7 +51,6 @@ export function AuthProvider({ children }) {
     userLoggedIn,
     isEmailUser,
     currentUser,
-    setCurrentUser,
     logout // Add logout function to the context value
   };
 

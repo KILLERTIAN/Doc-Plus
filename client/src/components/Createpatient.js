@@ -14,6 +14,7 @@ function Createpatient() {
     p_gender: '',
     p_bloodgroup: '',
     p_address: '',
+    avatar: null, // Add avatar field to state
     firebaseUid: currentUser ? currentUser.uid : '' // Include Firebase UID
   });
 
@@ -25,10 +26,32 @@ function Createpatient() {
     }));
   };
 
+  const handleFileChange = (e) => {
+    setPatient(prevPatient => ({
+      ...prevPatient,
+      avatar: e.target.files[0] // Store the selected file in state
+    }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8000/backend/patients', patient);
+      const formData = new FormData();
+      formData.append('p_id', patient.p_id);
+      formData.append('p_name', patient.p_name);
+      formData.append('p_age', patient.p_age);
+      formData.append('p_gender', patient.p_gender);
+      formData.append('p_bloodgroup', patient.p_bloodgroup);
+      formData.append('p_address', patient.p_address);
+      formData.append('avatar', patient.avatar); // Append avatar file to form data
+      formData.append('firebaseUid', patient.firebaseUid);
+
+      await axios.post('http://localhost:8000/backend/patients', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+
       alert('Patient created successfully!');
       setPatient({
         p_id: '',
@@ -37,7 +60,8 @@ function Createpatient() {
         p_gender: '',
         p_bloodgroup: '',
         p_address: '',
-        firebaseUid: currentUser ? currentUser.uid : '' // Include Firebase UID
+        avatar: null,
+        firebaseUid: currentUser ? currentUser.uid : ''
       });
       navigate('/dashboard');
     } catch (error) {
@@ -50,7 +74,7 @@ function Createpatient() {
     <div className="create-patient-container">
       <h2>Create Patient</h2>
       <div className="card">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
           <label>
             Patient ID:
             <input type="text" name="p_id" value={patient.p_id} onChange={handleChange} required />
@@ -74,6 +98,10 @@ function Createpatient() {
           <label>
             Address:
             <input type="text" name="p_address" value={patient.p_address} onChange={handleChange} required />
+          </label>
+          <label>
+            Avatar:
+            <input type="file" name="avatar" accept="image/*" onChange={handleFileChange} />
           </label>
           <button type="submit">Submit</button>
         </form>

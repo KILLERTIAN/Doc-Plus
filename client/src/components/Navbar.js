@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { useAuth } from '../contexts/AuthContext'; // Import the useAuth hook
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import axios from 'axios'; // Import Axios for making HTTP requests
 
 function Navbar() {
   const { currentUser, logout } = useAuth(); // Access the current user object and logout function from the auth context
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
+  const [avatar, setAvatar] = useState(null); // State to store the avatar
   const navigate = useNavigate(); // Initialize navigate
 
   const handleClick = () => setClick(!click);
@@ -25,7 +27,26 @@ function Navbar() {
     showButton();
   }, []);
 
-  window.addEventListener('resize', showButton);
+  useEffect(() => {
+    if (currentUser) {
+      // Call the function to fetch avatar when currentUser changes
+      fetchPatientData(currentUser.uid);
+    }
+  }, [currentUser]); // Fetch patient data when currentUser changes
+
+  const fetchPatientData = async (firebaseUid) => {
+    try {
+      const response = await axios.get(`http://localhost:8000/backend/patients?firebaseUid=${firebaseUid}`);
+      const patientData = response.data[0]; 
+      // Assuming the response contains patient data
+      // console.log(patientData)
+      // Here you can extract the avatar URL from patientData and set it to the state
+      const avatarUrl = patientData.avatar;
+      setAvatar(avatarUrl);
+    } catch (error) {
+      console.error('Error fetching patient data:', error);
+    }
+  };
 
   const handleLogout = async () => {
     try {
@@ -80,28 +101,18 @@ function Navbar() {
               </Link>
             </li>
 
-            {currentUser ? (
+            {currentUser && avatar && ( // Render avatar if currentUser exists and avatar is fetched
               <li className='nav-item'>
-                <div className="profile-container">
-                  <img src={currentUser.profilePicUrl} alt="Profile" className="profile-pic" />
-                  <div className="profile-dropdown">
+                <div className="profile-container" onClick={handleClick}>
+                  <img src={avatar} alt="Profile" className="profile-pic" />
+                  <div className="profile-dropdown" style={{ display: click ? 'block' : 'none' }}>
                     <button className="logout-button" onClick={handleLogout}>Logout</button>
                   </div>
                 </div>
               </li>
-            ) : (
-              <li>
-                <Link
-                  to='/sign-up'
-                  className='nav-links-mobile'
-                  onClick={closeMobileMenu}
-                >
-                  Sign Up
-                </Link>
-              </li>
             )}
           </ul>
-          {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
+          {!currentUser && button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
         </div>
       </nav>
     </>

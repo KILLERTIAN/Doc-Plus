@@ -61,7 +61,7 @@ function Dashboard() {
           <div className="userInfoContainer">
             <div className="profileImageName">
               <div className="profileImageSection">
-                <img src="https://robohash.org/sintessequaerat.png?size=70x70&set=set1" alt="" />
+                <img src={patient.avatar} alt="" />
               </div>
               <div className="userNameId">
                 <span>{patient.p_name}</span> <br />
