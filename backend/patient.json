@@ -158,5 +158,14 @@
     "p_gender": "Male",
     "p_bloodgroup": "A+",
     "p_address": "BCD, City K"
+  },
+  {
+    "firebaseUid": "UNkZXW0GEMXN9fCciTOC8WQswDp2",
+    "p_id": "P027",
+    "p_name": "Gojo Satoru",
+    "p_age": 28,
+    "p_gender": "Male",
+    "p_bloodgroup": "A+",
+    "p_address": "Jujutsu Kaisen"
   }
 ]

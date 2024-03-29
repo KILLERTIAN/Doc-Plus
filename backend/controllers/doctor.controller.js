@@ -1,5 +1,5 @@
 import Doctor from "../models/doctor.model.js";
-import createError from "../utils/createError.js";
+// import createError from "../utils/createError.js";
 
 // Helper function to extract doctor fields from request body
 const extractDoctorFields = (body) => {
