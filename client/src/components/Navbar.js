@@ -51,11 +51,13 @@ function Navbar() {
   const handleLogout = async () => {
     try {
       await logout();
-      navigate('/'); // Use navigate to redirect to the home page after logout
+      setAvatar(""); 
+      navigate('/'); 
     } catch (error) {
       console.error('Logout failed:', error);
     }
   };
+  
 
   return (
     <>
@@ -101,7 +103,7 @@ function Navbar() {
               </Link>
             </li>
 
-            {currentUser && avatar && ( // Render avatar if currentUser exists and avatar is fetched
+            {currentUser && avatar && ( 
               <li className='nav-item'>
                 <div className="profile-container" onClick={handleClick}>
                   <img src={avatar} alt="Profile" className="profile-pic" />

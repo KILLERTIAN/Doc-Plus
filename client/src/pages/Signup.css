@@ -97,6 +97,7 @@
     margin: 20px 30px;
     margin-top: 30px;
     font-size: 0.35em;
+    text-align: center;
 }
 
 .sign-up-input {
@@ -137,11 +138,16 @@
 }
 
 .or {
-    font-size: 0.13em;
+    font-size: 0.15em;
     margin: 10px;
+    /* background: rgba(255, 255, 255, 0.15); */
+    text-align: center;
 }
 
 .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 350px;
     height: 5px;
     margin-bottom: 15px;
@@ -155,7 +161,7 @@
     width: 350px;
     align-items: center;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     /* background-color: #3962f54f; */
 
 }

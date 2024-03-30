@@ -52,7 +52,7 @@ function Createpatient() {
         }
       });
 
-      alert('Patient created successfully!');
+      // alert('Patient created successfully!');
       setPatient({
         p_id: '',
         p_name: '',
@@ -63,7 +63,10 @@ function Createpatient() {
         avatar: null,
         firebaseUid: currentUser ? currentUser.uid : ''
       });
+      
       navigate('/dashboard');
+      
+       
     } catch (error) {
       console.error('Error creating patient:', error);
       alert('An error occurred. Please try again.');

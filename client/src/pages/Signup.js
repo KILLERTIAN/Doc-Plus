@@ -27,7 +27,7 @@ function Signup() {
           <h1>New to HEDOC? </h1>
           <h3>I am a Citizen</h3>
           <h3>I am a Doctor</h3>
-          <h4>Already a user ? <Link className='Loginlink'> Login </Link> here.</h4>
+          <h4>Already a user ? <Link to="/login" className='Loginlink'> Login </Link> here.</h4>
         </div>
         <div className="loginContainer">
           <h2 className="welcometext">WELCOME</h2>
@@ -47,8 +47,10 @@ function Signup() {
           />
           {error && <p className="error">{error}</p>}
           <button className="signup" onClick={handleSignup}>Sign Up</button>
+          
+          <div className="divider">
           <h4 className="or">or</h4>
-          <div className="divider"></div>
+          </div>
           <div className="social">
             <Link className="social-icons">
               <img src="images/sms.png" alt="sms" className="twitter" />

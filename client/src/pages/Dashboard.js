@@ -20,6 +20,7 @@ function Dashboard() {
     }
   }, [currentUser]);
 
+
   const fetchData = async (firebaseUid) => {
     try {
       // Fetch patient data based on Firebase UID
@@ -38,6 +39,14 @@ function Dashboard() {
       console.error('Error fetching data:', error);
     }
   };
+  useEffect(() => {
+    if (patient && !localStorage.getItem('isReloaded')) {
+      localStorage.setItem('isReloaded', true);
+      window.location.reload(); // Reload the page once patient data is fetched
+    }
+  }, [patient]);
+  
+  
 
   // Function to get doctor's name and specialization by doctor ID
   const getDoctorInfo = (doctorId) => {

@@ -1,0 +1,41 @@
+.sign-in-input{
+    display: flex;
+    width: 300px;
+    margin: 10px;
+    padding: 12px 20px;
+    border-radius: 20px;
+    background: #ffffff29;
+    border: none;
+    color: #fff;
+    font-size: 0.14em;
+}
+.sign-in-input::placeholder {
+    color: rgb(219, 219, 219);
+    font-weight: 100;
+    letter-spacing: 1px;
+}
+.sign-in-input:focus {
+    border: none;
+    outline: 3px solid rgba(255, 255, 255, 0.5);
+}
+.signin {
+    margin: 15px 10px;
+    padding: 12px 100px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border: none;
+    color: rgb(240, 240, 240);
+    letter-spacing: 1px;
+    background: linear-gradient(to right, rgb(0, 13, 50), rgb(0, 69, 152));
+    cursor: pointer;
+}
+.signUplink {
+    font-size: 0.14em;
+    margin: 10px 5px;
+    letter-spacing: normal;
+    /* display: flex;
+    width: 100%; */
+    /* align-items: center;
+    justify-content: center; */
+}
