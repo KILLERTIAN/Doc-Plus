@@ -11,6 +11,18 @@ function Dashboard() {
   const [patient, setPatient] = useState(null);
   const [doctors, setDoctors] = useState([]);
   const [interactions, setInteractions] = useState([]);
+  const [ongoingTreatments, setOngoingTreatments] = useState([]);
+
+  // Function to calculate time remaining for a treatment
+const calculateTimeRemaining = (treatment) => {
+  const now = new Date();
+  const meetingDate = new Date(treatment.meeting_date);
+  const endDate = new Date(meetingDate.getTime() + treatment.treatment_duration * 24 * 60 * 60 * 1000); // Calculate end date based on meeting date and treatment duration
+  const timeDiff = endDate - now;
+  const daysRemaining = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); // Convert milliseconds to days and round up
+  return `${daysRemaining} days`;
+};
+
 
   useEffect(() => {
     console.log('Current User:', currentUser);
@@ -18,35 +30,72 @@ function Dashboard() {
       // Fetch data only if currentUser exists
       fetchData(currentUser.uid); // Pass the Firebase UID to the fetchData function
     }
+    // eslint-disable-next-line
   }, [currentUser]);
-
 
   const fetchData = async (firebaseUid) => {
     try {
-      // Fetch patient data based on Firebase UID
       const patientResponse = await axios.get(`http://localhost:8000/backend/patients?firebaseUid=${firebaseUid}`);
-      const currentPatient = patientResponse.data[0]; // Assuming only one patient is associated with the user
+      const currentPatient = patientResponse.data[0];
       setPatient(currentPatient);
 
-      // Fetch interactions data filtered by patient ID
       const interactionsResponse = await axios.get(`http://localhost:8000/backend/pdinteraction?patientId=${currentPatient.p_id}`);
-      setInteractions(interactionsResponse.data);
+      const interactionsData = interactionsResponse.data;
+      setInteractions(interactionsData);
 
-      // Fetch all doctors
+      // Store interactions data in local storage
+      localStorage.setItem('interactions', JSON.stringify(interactionsData));
+
       const doctorsResponse = await axios.get('http://localhost:8000/backend/doctors');
       setDoctors(doctorsResponse.data);
+
+      // Calculate ongoing treatments
+      const now = new Date();
+      const ongoing = interactionsData.filter(interaction => {
+        const meetingDate = new Date(interaction.meeting_date);
+        const formattedDate = meetingDate.toLocaleDateString('en-GB', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit'
+        });
+        const durationDate = new Date(formattedDate);
+        durationDate.setDate(durationDate.getDate() + interaction.treatment_duration);
+        return durationDate > now;
+      });
+      setOngoingTreatments(ongoing);
+
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
+
   useEffect(() => {
     if (patient && !localStorage.getItem('isReloaded')) {
+      // Retrieve interactions data from local storage
+      const storedInteractions = JSON.parse(localStorage.getItem('interactions'));
+      if (storedInteractions) {
+        setInteractions(storedInteractions);
+
+        // Calculate ongoing treatments
+        const now = new Date();
+        const ongoing = storedInteractions.filter(interaction => {
+          const meetingDate = new Date(interaction.meeting_date);
+          const formattedDate = meetingDate.toLocaleDateString('en-GB', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+          });
+          const durationDate = new Date(formattedDate);
+          durationDate.setDate(durationDate.getDate() + interaction.treatment_duration);
+          return durationDate > now;
+        });
+        setOngoingTreatments(ongoing);
+      }
+
       localStorage.setItem('isReloaded', true);
       window.location.reload(); // Reload the page once patient data is fetched
     }
   }, [patient]);
-  
-  
 
   // Function to get doctor's name and specialization by doctor ID
   const getDoctorInfo = (doctorId) => {
@@ -87,27 +136,41 @@ function Dashboard() {
                 <li>Address: {patient.p_address}</li>
               </ul>
             </div>
+
           </div>
         )}
         <div className="userHistorySection">
           <div className="userSideBar">
             <section className="patientInfo">
               <h3>Family History</h3>
-              <h5>Sugar </h5>
-              &nbsp;
-              <h3>Ongoing Treatment/Medication</h3>
-              <h5>You are not undergoing through any medical issue.<br />
-                Stay Healthy</h5>
+              <p>{patient ? patient.Family_History : 'Loading...'}</p>
+              <h3>Allergies</h3>
+              <p>{patient ? patient.Allergies : 'Loading...'}</p>
+              <div className="ongoingTreatments">
+                <h3>Ongoing Treatments</h3>
+                <ul className="treatmentList">
+                  {ongoingTreatments.map(treatment => (
+                    <li key={treatment._id} className="treatmentItem">
+                      <div className="treatmentInfo">
+                        <p className="treatmentName">{treatment.treatment_name}</p>
+                        <p className="medicineTaken">Medicine Taken: {treatment.medicines_provided.join(', ')}</p>
+                        <p className="timeRemaining">Time Remaining: {calculateTimeRemaining(treatment)}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
             </section>
           </div>
           <div className="userPastRecords">
             <h2>Past Doctor Visits</h2>
-            <Filter/>
+            <Filter />
             <div className="accordionContainer">
               {interactions.map(interaction => (
                 <div key={interaction._id}>
                   <div className="fiterTime">
-                    {new Date(interaction.meeting_date).toLocaleDateString('en-US', {
+                    {new Date(interaction.meeting_date).toLocaleDateString('en-GB', {
                       year: 'numeric',
                       month: '2-digit',
                       day: '2-digit'

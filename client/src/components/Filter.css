@@ -34,6 +34,42 @@
   .filterButton:hover {
     background-color: #45a049;
   }
+  .userSearch {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    border: 1.3px solid #ddd;
+    border-radius: 25px;
+    padding: 8px 10px;
+    /* height: 6vh; */
+    min-height: 30px;
+    margin: 0 10px;
+    background-color: #fff;
+  }
+  
+  .searchInput {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    padding: 0 10px;
+    /* background: transparent; */
+  }
+  .userSearchIcon{
+    position: absolute;
+    ;
+    height: 20px;
+
+  }
+  
+ 
+  .searchInput:focus {
+    border-color: #ddd; 
+  }
+  
+  
 
   @media(max-width:768px) {
   .filterContainer {

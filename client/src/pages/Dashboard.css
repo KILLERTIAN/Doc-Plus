@@ -2,7 +2,7 @@
     display: flex;
     position: relative;
     width: 100%;
-    height: 90vh;
+    /* height: 90vh; */
     align-items: center;
     justify-content: center;
     padding: 20px 0;
@@ -100,14 +100,72 @@
     position: relative;
     width: 250px;
     /* height: 100%; */
-    padding: 20px;
+    padding: 10px;
     border-right: 1.5px solid #ddd;
 }
+
+.patientInfo {
+    /* background-color: #f0f0f0; */
+    padding: 20px;
+    /* border-radius: 8px; */
+}
+
+.patientInfo h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.patientInfo p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.ongoingTreatments {
+    margin-top: 20px;
+}
+
+.treatmentList {
+    list-style: none;
+    padding: 0;
+}
+
+.treatmentItem {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.treatmentInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.treatmentInfo p {
+    margin: 0;
+}
+
+.treatmentName {
+    font-weight: bold;
+}
+
+.medicineTaken {
+    margin-top: 5px;
+}
+
+.timeRemaining {
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* Optional: Add more styling as needed */
+
 
 .userPastRecords {
     display: flex;
     position: relative;
     width: 100%;
+    /* height: 90vh; */
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
@@ -118,6 +176,7 @@
 .userPastRecords h2 {
     margin: 10px;
     font-size: 1.5em;
+    position: sticky;
 }
 
 .accordionContainer {
@@ -165,6 +224,6 @@
 
 .accordionArrow {
     margin: 5px 10px;
-    transition: transform 0.83s ease-in-out; /* Add transition for arrow rotation */
+    transition: transform 0.83s ease-in-out;
+    /* Add transition for arrow rotation */
 }
-

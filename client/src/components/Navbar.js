@@ -113,8 +113,9 @@ function Navbar() {
                 </div>
               </li>
             )}
+            {!currentUser && button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
           </ul>
-          {!currentUser && button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
+          
         </div>
       </nav>
     </>
