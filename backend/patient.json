@@ -166,6 +166,8 @@
     "p_age": 28,
     "p_gender": "Male",
     "p_bloodgroup": "A+",
-    "p_address": "Jujutsu Kaisen"
+    "p_address": "Jujutsu Kaisen",
+    "Allergies":"dust allergy",
+    "Family_History":"sugar"
   }
 ]

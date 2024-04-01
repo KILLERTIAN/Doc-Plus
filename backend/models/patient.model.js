@@ -10,7 +10,9 @@ const patientSchema = new Schema({
   p_gender: { type: String, required: true },
   p_bloodgroup: { type: String, required: false },
   p_address: { type: String, required: true },
-  avatar: { type: String, required: true } 
+  avatar: { type: String, required: true },
+  Allergies : { type: String, required: true },
+  Family_History:{ type: String, required: true }
 }, { collection: 'patients' });
 
 export default mongoose.model('Patient', patientSchema);

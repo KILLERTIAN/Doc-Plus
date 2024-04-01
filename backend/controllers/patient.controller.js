@@ -5,12 +5,34 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 
 const createUser = asyncHandler(async (req, res) => {
-  const { firebaseUid, p_id, p_name, p_age, p_gender, p_bloodgroup, p_address } = req.body;
+  const {
+    firebaseUid,
+    p_id,
+    p_name,
+    p_age,
+    p_gender,
+    p_bloodgroup,
+    p_address,
+    avatar,
+    Allergies,
+    Family_History // Add new fields here
+  } = req.body;
 
   // Check if any required field is empty
-  if ([firebaseUid, p_id, p_name, p_age, p_gender, p_bloodgroup, p_address].some((field) => field?.trim() === "")
+  if (
+    [
+      firebaseUid,
+      p_id,
+      p_name,
+      p_age,
+      p_gender,
+      p_bloodgroup,
+      p_address,
+      Allergies,
+      Family_History // Add new fields here
+    ].some((field) => field?.trim() === "")
   ) {
-      throw new ApiError(400, "All fields are required")
+    throw new createError(400, "All fields are required");
   }
 
   // Check if user already exists by firebaseUid or p_id
@@ -26,8 +48,8 @@ const createUser = asyncHandler(async (req, res) => {
   }
 
   // Upload avatar to cloudinary
-  const avatar = await uploadOnCloudinary(avatarLocalPath);
-  if (!avatar) {
+  const avatarCloudinary = await uploadOnCloudinary(avatarLocalPath);
+  if (!avatarCloudinary) {
     throw new createError(500, "Error uploading avatar");
   }
 
@@ -40,7 +62,9 @@ const createUser = asyncHandler(async (req, res) => {
     p_gender,
     p_bloodgroup,
     p_address,
-    avatar: avatar.url
+    avatar: avatarCloudinary.url,
+    Allergies,
+    Family_History // Add new fields here
   });
 
   // Respond with the newly created user
@@ -48,8 +72,6 @@ const createUser = asyncHandler(async (req, res) => {
 });
 
 export { createUser };
-
-
 
 export const deleteUser = async (req, res, next) => {
   try {
@@ -104,3 +126,4 @@ export const getUsers = async (req, res, next) => {
     next(err);
   }
 };
+

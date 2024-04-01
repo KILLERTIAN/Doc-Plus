@@ -1,362 +1,113 @@
 [
   {
-    "p_id": "P001",
+    "p_id": "P034",
     "d_id": "D001",
-    "meeting_date": "2024-03-01",
-    "hospital": "Hospital A",
-    "symptoms": [
-      "Toothache",
-      "Gum Bleeding"
-    ],
-    "medicines_provided": [
-      "Painkillers",
-      "Antibiotics"
-    ],
+    "treatment_name": "Ongoing Treatment 2",
+    "meeting_date": "2024-07-10",
+    "treatment_duration": 60,
+    "medicines_provided": ["Antibiotics", "Painkillers"],
+    "hospital": "St. John's Hospital",
+    "symptoms": ["Headache", "Fever"],
     "documents": [
-      "Dental X-Ray",
-      "Prescription"
+      { "document_name": "Blood Test Results", "document_url": "https://example.com/blood-test-results.pdf" },
+      { "document_name": "Prescription", "document_url": "https://example.com/prescription.pdf" }
     ]
   },
   {
-    "p_id": "P001",
+    "p_id": "P034",
     "d_id": "D002",
-    "meeting_date": "2024-03-05",
-    "hospital": "Hospital B",
-    "symptoms": [
-      "Headache",
-      "Dizziness"
-    ],
-    "medicines_provided": [
-      "Painkillers",
-      "Anti-nausea Medication"
-    ],
+    "treatment_name": "Chronic Disease Management",
+    "meeting_date": "2024-08-15",
+    "treatment_duration": 120,
+    "medicines_provided": ["Insulin", "Blood Pressure Medication"],
+    "hospital": "Mercy Hospital",
+    "symptoms": ["High Blood Sugar", "Hypertension"],
     "documents": [
-      "MRI Scan",
-      "Prescription"
+      { "document_name": "Blood Sugar Records", "document_url": "https://example.com/blood-sugar-records.pdf" },
+      { "document_name": "Prescription", "document_url": "https://example.com/prescription.pdf" }
     ]
   },
   {
-    "p_id": "P002",
+    "p_id": "P034",
     "d_id": "D003",
-    "meeting_date": "2024-03-10",
-    "hospital": "Hospital C",
-    "symptoms": [
-      "Chest Pain",
-      "Shortness of Breath"
-    ],
-    "medicines_provided": [
-      "Heart Medication",
-      "Aspirin"
-    ],
+    "treatment_name": "Physiotherapy Sessions",
+    "meeting_date": "2024-09-20",
+    "treatment_duration": 45,
+    "medicines_provided": ["Muscle Relaxants", "Pain Relief Gel"],
+    "hospital": "City Hospital",
+    "symptoms": ["Back Pain", "Muscle Stiffness"],
     "documents": [
-      "ECG Report",
-      "Prescription"
+      { "document_name": "Physiotherapy Plan", "document_url": "https://example.com/physiotherapy-plan.pdf" },
+      { "document_name": "Prescription", "document_url": "https://example.com/prescription.pdf" }
     ]
   },
   {
-    "p_id": "P002",
+    "p_id": "P034",
     "d_id": "D004",
-    "meeting_date": "2024-03-15",
-    "hospital": "Hospital D",
-    "symptoms": [
-      "Knee Pain",
-      "Joint Stiffness"
-    ],
-    "medicines_provided": [
-      "Painkillers",
-      "Physical Therapy"
-    ],
+    "treatment_name": "Mental Health Counseling",
+    "meeting_date": "2024-10-25",
+    "treatment_duration": 90,
+    "medicines_provided": ["Antidepressants", "Anxiolytics"],
+    "hospital": "Greenleaf Psychiatric Center",
+    "symptoms": ["Depression", "Anxiety"],
     "documents": [
-      "X-Ray Report",
-      "Prescription"
+      { "document_name": "Counseling Notes", "document_url": "https://example.com/counseling-notes.pdf" },
+      { "document_name": "Prescription", "document_url": "https://example.com/prescription.pdf" }
     ]
   },
   {
-    "p_id": "P003",
+    "p_id": "P034",
     "d_id": "D005",
-    "meeting_date": "2024-03-20",
-    "hospital": "Hospital E",
-    "symptoms": [
-      "Fever",
-      "Cough"
-    ],
-    "medicines_provided": [
-      "Antipyretics",
-      "Cough Syrup"
-    ],
+    "treatment_name": "Respiratory Therapy",
+    "meeting_date": "2024-11-30",
+    "treatment_duration": 75,
+    "medicines_provided": ["Inhalers", "Corticosteroids"],
+    "hospital": "Breathe Easy Clinic",
+    "symptoms": ["Shortness of Breath", "Coughing"],
     "documents": [
-      "Blood Test",
-      "Prescription"
+      { "document_name": "Lung Function Test Results", "document_url": "https://example.com/lung-function-results.pdf" },
+      { "document_name": "Prescription", "document_url": "https://example.com/prescription.pdf" }
     ]
   },
   {
-    "p_id": "P003",
+    "p_id": "P034",
     "d_id": "D006",
-    "meeting_date": "2024-03-25",
-    "hospital": "Hospital F",
-    "symptoms": [
-      "Back Pain",
-      "Muscle Spasms"
-    ],
-    "medicines_provided": [
-      "Painkillers",
-      "Muscle Relaxants"
-    ],
+    "treatment_name": "Surgical Procedure Consultation",
+    "meeting_date": "2025-01-05",
+    "treatment_duration": 30,
+    "medicines_provided": ["N/A"],
+    "hospital": "Precision Surgery Center",
+    "symptoms": ["Surgical Evaluation"],
     "documents": [
-      "MRI Scan",
-      "Prescription"
+      { "document_name": "Surgical Consultation Report", "document_url": "https://example.com/surgical-consultation-report.pdf" }
     ]
   },
   {
-    "p_id": "P004",
+    "p_id": "P034",
     "d_id": "D007",
-    "meeting_date": "2024-04-01",
-    "hospital": "Hospital G",
-    "symptoms": [
-      "Abdominal Pain",
-      "Nausea"
-    ],
-    "medicines_provided": [
-      "Antacids",
-      "Antiemetics"
-    ],
+    "treatment_name": "Dermatological Treatment",
+    "meeting_date": "2025-02-10",
+    "treatment_duration": 45,
+    "medicines_provided": ["Topical Ointments", "Antifungal Creams"],
+    "hospital": "Skin Care Clinic",
+    "symptoms": ["Skin Rash", "Itching"],
     "documents": [
-      "Ultrasound Report",
-      "Prescription"
+      { "document_name": "Skin Biopsy Report", "document_url": "https://example.com/skin-biopsy-report.pdf" },
+      { "document_name": "Prescription", "document_url": "https://example.com/prescription.pdf" }
     ]
   },
   {
-    "p_id": "P004",
+    "p_id": "P034",
     "d_id": "D008",
-    "meeting_date": "2024-04-05",
-    "hospital": "Hospital H",
-    "symptoms": [
-      "Sore Throat",
-      "Fever"
-    ],
-    "medicines_provided": [
-      "Antibiotics",
-      "Antipyretics"
-    ],
+    "treatment_name": "Gastrointestinal Evaluation",
+    "meeting_date": "2025-03-15",
+    "treatment_duration": 60,
+    "medicines_provided": ["Antacids", "Proton Pump Inhibitors"],
+    "hospital": "Digestive Health Center",
+    "symptoms": ["Stomach Pain", "Acid Reflux"],
     "documents": [
-      "Throat Swab",
-      "Prescription"
-    ]
-  },
-  {
-    "p_id": "P005",
-    "d_id": "D009",
-    "meeting_date": "2024-04-10",
-    "hospital": "Hospital I",
-    "symptoms": [
-      "Rash",
-      "Itching"
-    ],
-    "medicines_provided": [
-      "Topical Steroids",
-      "Antihistamines"
-    ],
-    "documents": [
-      "Skin Biopsy",
-      "Prescription"
-    ]
-  },
-  {
-    "p_id": "P005",
-    "d_id": "D010",
-    "meeting_date": "2024-04-15",
-    "hospital": "Hospital J",
-    "symptoms": [
-      "Fatigue",
-      "Weakness"
-    ],
-    "medicines_provided": [
-      "Vitamin Supplements",
-      "Iron Supplements"
-    ],
-    "documents": [
-      "Blood Test",
-      "Prescription"
-    ]
-  },
-  {
-    "p_id": "P006",
-    "d_id": "D001",
-    "meeting_date": "2024-04-20",
-    "hospital": "Hospital K",
-    "symptoms": [
-      "Muscle Pain",
-      "Weakness"
-    ],
-    "medicines_provided": [
-      "Painkillers",
-      "Physical Therapy"
-    ],
-    "documents": [
-      "Physical Examination",
-      "Prescription"
-    ]
-  },
-  {
-    "p_id": "P006",
-    "d_id": "D002",
-    "meeting_date": "2024-04-25",
-    "hospital": "Hospital L",
-    "symptoms": [
-      "Swelling",
-      "Redness"
-    ],
-    "medicines_provided": [
-      "Anti-inflammatory",
-      "Antibiotics"
-    ],
-    "documents": [
-      "Biopsy Report",
-      "Prescription"
-    ]
-  },
-  {
-    "p_id": "P007",
-    "d_id": "D003",
-    "meeting_date": "2024-05-01",
-    "hospital": "Hospital M",
-    "symptoms": [
-      "Frequent Urination",
-      "Burning Sensation"
-    ],
-    "medicines_provided": [
-      "Antibiotics",
-      "Urinary Alkalizer"
-    ],
-    "documents": [
-      "Urine Analysis",
-      "Prescription"
-    ]
-  },
-  {
-    "p_id": "P007",
-    "d_id": "D004",
-    "meeting_date": "2024-05-05",
-    "hospital": "Hospital N",
-    "symptoms": [
-      "Stomach Pain",
-      "Nausea"
-    ],
-    "medicines_provided": [
-      "Antacids",
-      "Antiemetics"
-    ],
-    "documents": [
-      "Endoscopy Report",
-      "Prescription"
-    ]
-  },
-  {
-    "p_id": "P008",
-    "d_id": "D005",
-    "meeting_date": "2024-05-10",
-    "hospital": "Hospital O",
-    "symptoms": [
-      "Bowel Changes",
-      "Abdominal Cramps"
-    ],
-    "medicines_provided": [
-      "Antispasmodics",
-      "Dietary Changes"
-    ],
-    "documents": [
-      "Colonoscopy Report",
-      "Prescription"
-    ]
-  },
-  {
-    "p_id": "P008",
-    "d_id": "D006",
-    "meeting_date": "2024-05-15",
-    "hospital": "Hospital P",
-    "symptoms": [
-      "Back Pain",
-      "Headache"
-    ],
-    "medicines_provided": [
-      "Painkillers",
-      "Muscle Relaxants"
-    ],
-    "documents": [
-      "MRI Scan",
-      "Prescription"
-    ]
-  },
-  {
-    "p_id": "P009",
-    "d_id": "D007",
-    "meeting_date": "2024-05-20",
-    "hospital": "Hospital Q",
-    "symptoms": [
-      "Chest Pain",
-      "Shortness of Breath"
-    ],
-    "medicines_provided": [
-      "Heart Medication",
-      "Aspirin"
-    ],
-    "documents": [
-      "ECG Report",
-      "Prescription"
-    ]
-  },
-  {
-    "p_id": "P009",
-    "d_id": "D008",
-    "meeting_date": "2024-05-25",
-    "hospital": "Hospital R",
-    "symptoms": [
-      "Knee Pain",
-      "Joint Stiffness"
-    ],
-    "medicines_provided": [
-      "Painkillers",
-      "Physical Therapy"
-    ],
-    "documents": [
-      "X-Ray Report",
-      "Prescription"
-    ]
-  },
-  {
-    "p_id": "P010",
-    "d_id": "D009",
-    "meeting_date": "2024-05-30",
-    "hospital": "Hospital S",
-    "symptoms": [
-      "Itching",
-      "Rashes"
-    ],
-    "medicines_provided": [
-      "Antihistamines",
-      "Topical Creams"
-    ],
-    "documents": [
-      "Allergy Test",
-      "Prescription"
-    ]
-  },
-  {
-    "p_id": "P010",
-    "d_id": "D010",
-    "meeting_date": "2024-06-05",
-    "hospital": "Hospital T",
-    "symptoms": [
-      "Dizziness",
-      "Fatigue"
-    ],
-    "medicines_provided": [
-      "Vitamins",
-      "Rest"
-    ],
-    "documents": [
-      "Blood Pressure Readings",
-      "Prescription"
+      { "document_name": "Endoscopy Results", "document_url": "https://example.com/endoscopy-results.pdf" },
+      { "document_name": "Prescription", "document_url": "https://example.com/prescription.pdf" }
     ]
   }
 ]

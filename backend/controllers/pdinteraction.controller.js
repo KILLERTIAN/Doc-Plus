@@ -1,24 +1,27 @@
 import PDInteraction from "../models/pdinteraction.model.js";
-// import createError from "../utils/createError.js";
 
 // Helper function to extract interaction fields from request body
 const extractInteractionFields = (body) => {
   const {
     p_id,
     d_id,
+    treatment_name,
     meeting_date,
+    treatment_duration,
+    medicines_provided,
     hospital,
     symptoms,
-    medicines_provided,
     documents,
   } = body;
   return {
     p_id,
     d_id,
+    treatment_name,
     meeting_date,
+    treatment_duration,
+    medicines_provided,
     hospital,
     symptoms,
-    medicines_provided,
     documents,
   };
 };
@@ -77,22 +80,22 @@ export const getInteraction = async (req, res, next) => {
 };
 
 export const getInteractions = async (req, res, next) => {
-    const { page = 1, limit = 20, patientId } = req.query; // Extract patientId from query params
-  
-    try {
-      let query = {}; // Initialize empty query object
-      if (patientId) {
-        // If patientId is provided, filter interactions by patientId
-        query = { p_id: patientId };
-      }
-  
-      // Fetch interactions based on query
-      const interactions = await PDInteraction.find(query)
-        .skip((page - 1) * limit)
-        .limit(parseInt(limit));
-  
-      res.status(200).json(interactions);
-    } catch (err) {
-      next(err);
+  const { page = 1, limit = 20, patientId } = req.query; // Extract patientId from query params
+
+  try {
+    let query = {}; // Initialize empty query object
+    if (patientId) {
+      // If patientId is provided, filter interactions by patientId
+      query = { p_id: patientId };
     }
-  };
+
+    // Fetch interactions based on query
+    const interactions = await PDInteraction.find(query)
+      .skip((page - 1) * limit)
+      .limit(parseInt(limit));
+
+    res.status(200).json(interactions);
+  } catch (err) {
+    next(err);
+  }
+};
