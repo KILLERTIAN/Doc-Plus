@@ -1,8 +1,16 @@
+/* Updated CSS */
+/* Hide file input */
+.card input[type="file"] {
+  display: none;
+}
+
+/* Container Styles */
 .create-patient-container {
   max-width: 600px;
   margin: 0 auto;
 }
 
+/* Card Styles */
 .card {
   background-color: #ffffff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -16,7 +24,8 @@
   margin-bottom: 10px;
 }
 
-.card input {
+.card input,
+.card select {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -36,4 +45,28 @@
 
 .card button:hover {
   background-color: #0056b3;
+}
+
+.profile-image-preview {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 0 auto 20px; /* Align in the center and add bottom margin */
+}
+
+.empty-profile-preview {
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f0;
+}
+
+.preview-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

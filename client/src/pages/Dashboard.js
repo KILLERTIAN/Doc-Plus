@@ -24,50 +24,48 @@ const calculateTimeRemaining = (treatment) => {
 };
 
 
-  useEffect(() => {
-    console.log('Current User:', currentUser);
-    if (currentUser) {
-      // Fetch data only if currentUser exists
-      fetchData(currentUser.uid); // Pass the Firebase UID to the fetchData function
-    }
-    // eslint-disable-next-line
-  }, [currentUser]);
+useEffect(() => {
+  if (currentUser) {
+    fetchData(currentUser.uid); // Pass the Firebase UID to the fetchData function
+  }
+}, [currentUser]);
 
-  const fetchData = async (firebaseUid) => {
-    try {
-      const patientResponse = await axios.get(`http://localhost:8000/backend/patients?firebaseUid=${firebaseUid}`);
-      const currentPatient = patientResponse.data[0];
-      setPatient(currentPatient);
+const fetchData = async (firebaseUid) => {
+  try {
+    const patientResponse = await axios.get(`http://localhost:8000/backend/patients?firebaseUid=${firebaseUid}`);
+    const currentPatient = patientResponse.data[0];
+    setPatient(currentPatient);
 
-      const interactionsResponse = await axios.get(`http://localhost:8000/backend/pdinteraction?patientId=${currentPatient.p_id}`);
-      const interactionsData = interactionsResponse.data;
-      setInteractions(interactionsData);
+    const interactionsResponse = await axios.get(`http://localhost:8000/backend/pdinteraction?patientId=${currentPatient.p_id}`);
+    const interactionsData = interactionsResponse.data;
+    setInteractions(interactionsData);
 
-      // Store interactions data in local storage
-      localStorage.setItem('interactions', JSON.stringify(interactionsData));
+    // Store interactions data in local storage
+    localStorage.setItem('interactions', JSON.stringify(interactionsData));
 
-      const doctorsResponse = await axios.get('http://localhost:8000/backend/doctors');
-      setDoctors(doctorsResponse.data);
+    const doctorsResponse = await axios.get('http://localhost:8000/backend/doctors');
+    setDoctors(doctorsResponse.data);
 
-      // Calculate ongoing treatments
-      const now = new Date();
-      const ongoing = interactionsData.filter(interaction => {
-        const meetingDate = new Date(interaction.meeting_date);
-        const formattedDate = meetingDate.toLocaleDateString('en-GB', {
-          year: 'numeric',
-          month: '2-digit',
-          day: '2-digit'
-        });
-        const durationDate = new Date(formattedDate);
-        durationDate.setDate(durationDate.getDate() + interaction.treatment_duration);
-        return durationDate > now;
+    // Calculate ongoing treatments
+    const now = new Date();
+    const ongoing = interactionsData.filter(interaction => {
+      const meetingDate = new Date(interaction.meeting_date);
+      const formattedDate = meetingDate.toLocaleDateString('en-GB', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
       });
-      setOngoingTreatments(ongoing);
+      const durationDate = new Date(formattedDate);
+      durationDate.setDate(durationDate.getDate() + interaction.treatment_duration);
+      return durationDate > now;
+    });
+    setOngoingTreatments(ongoing);
 
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
 
   useEffect(() => {
     if (patient && !localStorage.getItem('isReloaded')) {

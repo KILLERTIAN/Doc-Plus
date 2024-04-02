@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { auth } from "../firebase";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup, signInWithPhoneNumber } from "firebase/auth";
 
 const AuthContext = React.createContext();
 
@@ -47,11 +47,32 @@ export function AuthProvider({ children }) {
     }
   }
 
+  async function loginWithGoogle() {
+    try {
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(auth, provider);
+      // The `onAuthStateChanged` listener will handle the rest
+    } catch (error) {
+      console.error('Google login failed:', error);
+    }
+  }
+
+  async function loginWithPhone(phoneNumber, recaptchaVerifier) {
+    try {
+      const confirmationResult = await signInWithPhoneNumber(auth, phoneNumber, recaptchaVerifier);
+      // You'll need to handle the confirmationResult to complete the sign-in process
+    } catch (error) {
+      console.error('Phone login failed:', error);
+    }
+  }
+
   const value = {
     userLoggedIn,
     isEmailUser,
     currentUser,
-    logout // Add logout function to the context value
+    logout,
+    loginWithGoogle,
+    loginWithPhone
   };
 
   return (

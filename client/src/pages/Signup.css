@@ -6,7 +6,7 @@
 }
 
 .body {
-    background-image: url('https://cdn.pixabay.com/photo/2015/12/13/11/34/trail-1090940_960_720.jpg');
+    background-image: url('https://cdn.pixabay.com/photo/2017/03/29/11/29/nepal-2184940_1280.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -16,7 +16,7 @@
     min-height: 90vh;
     align-items: center;
     justify-content: center;
-    padding: 50px 20px;
+    padding:  20px;
 
 }
 
@@ -39,7 +39,7 @@
     width: 400px;
     /* background: rgba(255, 255, 255, 0.15); */
     border-radius: 10px;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(15px);
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
@@ -86,7 +86,7 @@
     width: 400px;
     background: rgba(255, 255, 255, 0.15);
     border-radius: 10px;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(15px);
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 0.4rem;
@@ -98,6 +98,7 @@
     margin-top: 30px;
     font-size: 0.35em;
     text-align: center;
+    color: #ffffff;
 }
 
 .sign-up-input {
@@ -123,7 +124,19 @@
     border: none;
     outline: 3px solid rgba(255, 255, 255, 0.5);
 }
-
+.error {
+    color: rgb(255, 0, 0);
+    font-size: 14px;
+    margin-top: 5px;
+    padding: 0 20px;
+    letter-spacing: 1px;
+  }
+  
+  /* Optional: To style the input fields with errors */
+  .sign-up-input.error {
+    border-color: red;
+  }
+  
 .signup {
     margin: 15px 10px;
     padding: 12px 100px;
@@ -133,24 +146,32 @@
     border: none;
     color: rgb(240, 240, 240);
     letter-spacing: 1px;
+    font-size: 0.16em;
     background: linear-gradient(to right, rgb(0, 13, 50), rgb(0, 69, 152));
     cursor: pointer;
 }
 
 .or {
+    justify-content: center;
     font-size: 0.15em;
-    margin: 10px;
+    margin: 10px 5px 10px 9px;
     /* background: rgba(255, 255, 255, 0.15); */
     text-align: center;
 }
-
+.dividerLine{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 90%;
+}
 .divider {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 350px;
+    width: 100%;
     height: 5px;
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
     border-radius: 25px;
     background: linear-gradient(to right, rgb(0, 13, 50), rgb(0, 69, 152));
 }

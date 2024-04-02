@@ -7,6 +7,7 @@ import { useAuth } from '../contexts/AuthContext';
 function Createpatient() {
   const navigate = useNavigate();
   const { currentUser } = useAuth();
+  const [previewUrl, setPreviewUrl] = useState('');
   const [patient, setPatient] = useState({
     p_id: '',
     p_name: '',
@@ -38,11 +39,24 @@ function Createpatient() {
   };
 
   const handleFileChange = (e) => {
-    setPatient(prevPatient => ({
-      ...prevPatient,
-      avatar: e.target.files[0]
-    }));
+    const file = e.target.files[0];
+    
+    // Check if a file has been selected
+    if (file) {
+      setPatient(prevPatient => ({
+        ...prevPatient,
+        avatar: file
+      }));
+  
+      const reader = new FileReader();
+      reader.onload = () => {
+        setPreviewUrl(reader.result); // Update previewUrl with the URL of the uploaded image
+      };
+      reader.readAsDataURL(file);
+    }
   };
+  
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -80,6 +94,7 @@ function Createpatient() {
       setOtherAllergy('');
       setOtherFamilyHistory('');
       navigate('/dashboard');
+      window.location.reload();
     } catch (error) {
       console.error('Error creating patient:', error);
       alert('An error occurred. Please try again.');
@@ -91,6 +106,16 @@ function Createpatient() {
       <h2>Create Patient</h2>
       <div className="card">
         <form onSubmit={handleSubmit} encType="multipart/form-data">
+          <label htmlFor="avatar" className="profile-image-preview">
+            {previewUrl ? (
+              <img src={previewUrl} alt="Preview" className="preview-image" />
+            ) : (
+              <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/9-94702_user-outline-icon-clipart-png-download-profile-icon.png" alt="" className="preview-image" />
+            )}
+            <input type="file" id="avatar" name="avatar" accept="image/*" onChange={handleFileChange} />
+          </label>
+
+
           <label>
             Patient ID:
             <input type="text" name="p_id" value={patient.p_id} onChange={handleChange} required />
@@ -146,10 +171,6 @@ function Createpatient() {
             {patient.Family_History === 'Other' && (
               <input type="text" value={otherFamilyHistory} onChange={(e) => setOtherFamilyHistory(e.target.value)} placeholder="Specify Family History" />
             )}
-          </label>
-          <label>
-            Avatar:
-            <input type="file" name="avatar" accept="image/*" onChange={handleFileChange} />
           </label>
           <button type="submit">Submit</button>
         </form>
