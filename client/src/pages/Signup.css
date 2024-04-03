@@ -73,6 +73,32 @@
     justify-content: center;
 }
 
+.citizen-bar,
+.doctor-bar {
+  width: 50%;
+  background-color: transparent; /* Updated */
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.30em;
+  padding: 5px 20px;
+  margin: 5px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.glowing-border {
+  border: 2.5px solid transparent;
+  transition: border-color 0.5s ease-in-out;
+}
+
+.glowing-border.active {
+  border-color: #85b9fd; /* Updated */
+  background-color: rgba(255, 255, 255, 0.15); /* Added */
+}
+
+
 .Loginlink {
     color: rgb(133, 233, 255);
     margin: 0 3px;

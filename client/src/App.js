@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard';
 import Signup from './pages/Signup';
 import Createpatient from './components/Createpatient';
 import Login from './pages/Login';
+import Createdoctor from './components/Createdoctor';
 function App() {
   return (
     <Router>
@@ -16,6 +17,7 @@ function App() {
           <Route path='/dashboard' element={<Dashboard/>}/>
           {/* <Route path='/about' element={<About/>}/> */}
           <Route path="/create-patient" element={<Createpatient/>} />
+          <Route path="/create-doctor" element={<Createdoctor/>} />
           <Route path='/sign-up' element={<Signup/>}/>
           <Route path='/login' element={<Login/>}/>
         </Routes>

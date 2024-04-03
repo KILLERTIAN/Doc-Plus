@@ -1,0 +1,110 @@
+/* Updated CSS */
+/* Hide file input */
+.card input[type="file"] {
+    display: none;
+  }
+  
+  /* Container Styles */
+  .create-doctor-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  /* Card Styles */
+  .card {
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .card label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .card input,
+  .card select,
+  .card textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
+  .card button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .card button:hover {
+    background-color: #0056b3;
+  }
+  
+  .profile-image-preview {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 0 auto 20px; /* Align in the center and add bottom margin */
+  }
+  
+  .empty-profile-preview {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+  }
+  
+  .preview-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+.card .education-section,.card .work-experience-section{
+    margin-bottom: 20px;
+}
+.card .education-section button,
+.card .work-experience-section button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px; /* Adjust padding */
+  cursor: pointer;
+  font-size: 14px; /* Decrease font size */
+  /* margin-top: 10px; */
+  display: inline-block; /* Ensure inline display */
+}
+
+.card .education-section button:hover,
+.card .work-experience-section button:hover {
+  background-color: #0056b3;
+}
+
+/* Submit Button */
+.card button[type="submit"] {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px; /* Increase margin */
+}
+
+.card button[type="submit"]:hover {
+  background-color: #218838;
+}

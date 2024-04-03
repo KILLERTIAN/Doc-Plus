@@ -17,7 +17,8 @@ function Login() {
       // Redirect to the dashboard after successful login
       navigate('/dashboard');
     } catch (error) {
-      setError(error.message);
+      const errorMessage = mapFirebaseErrorToCustomMessage(error.code);
+      setError(errorMessage);
     }
   };
   const handleLoginWithGoogle = async () => {
@@ -27,7 +28,22 @@ function Login() {
       await signInWithPopup(auth, provider);
       navigate('/dashboard'); // Redirect to the dashboard after successful login
     } catch (error) {
-      setError(error.message);
+      const errorMessage = mapFirebaseErrorToCustomMessage(error.code);
+      setError(errorMessage);
+    }
+  };
+  const mapFirebaseErrorToCustomMessage = (errorCode) => {
+    switch (errorCode) {
+      case 'auth/invalid-email':
+        return 'Invalid Email or Password';
+      case 'auth/user-disabled':
+        return 'Your account has been disabled';
+      case 'auth/user-not-found':
+        return 'No user found with this email';
+      case 'auth/wrong-password':
+        return 'Invalid Email or Password';
+      default:
+        return 'An error occurred. Please try again later.';
     }
   };
 
