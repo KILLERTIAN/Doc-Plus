@@ -100,17 +100,15 @@ const fetchData = async (firebaseUid) => {
       }
 
       localStorage.setItem('isReloaded', true);
-      window.location.reload(); // Reload the page once patient data is fetched
+      window.location.reload(); 
     }
   }, [patient]);
 
-  // Function to get doctor's name and specialization by doctor ID
   const getDoctorInfo = (doctorId) => {
     const doctor = doctors.find(d => d.d_id === doctorId);
     return doctor ? `${doctor.d_name} (${doctor.d_specialization})` : 'Unknown';
   };
 
-  // Function to toggle visibility of details section for a specific interaction
   const toggleDetails = (id) => {
     setInteractions(prevInteractions =>
       prevInteractions.map(interaction =>
