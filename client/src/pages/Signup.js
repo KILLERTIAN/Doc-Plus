@@ -1,21 +1,26 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Signup.css';
-import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signInWithPhoneNumber } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signInWithPhoneNumber, updateProfile } from 'firebase/auth';
+import { setDoc, doc, getFirestore } from 'firebase/firestore'; // Import necessary functions from firebase/firestore
 
 function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState(''); // State to hold phone number
-  const [error, setError] = useState(null); // State to hold error message
-  const [showPhoneNumberInput, setShowPhoneNumberInput] = useState(false); // State to control visibility of phone number input
-  const [role, setRole] = useState('citizen'); // State to hold user role
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [error, setError] = useState(null);
+  const [showPhoneNumberInput, setShowPhoneNumberInput] = useState(false);
+  const [role, setRole] = useState('citizen');
   const navigate = useNavigate();
 
   const handleSignupWithEmail = async () => {
     try {
       const auth = getAuth();
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Store the user's role in the Firebase Authentication user data
+      await updateProfile(user, { displayName: role });
 
       // Navigate based on selected role
       if (role === 'citizen') {
@@ -33,7 +38,16 @@ function Signup() {
     try {
       const auth = getAuth();
       const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      // Store the user's role in Firestore
+      const db = getFirestore();
+      await setDoc(doc(db, 'users', user.uid), {
+        role: role,
+      });
+
+      // Navigate based on selected role
       if (role === 'citizen') {
         navigate('/create-patient');
       } else if (role === 'doctor') {
@@ -50,7 +64,22 @@ function Signup() {
       const auth = getAuth();
       const recaptchaVerifier = ''; // You need to initialize reCAPTCHA verifier if required
       const confirmationResult = await signInWithPhoneNumber(auth, phoneNumber, recaptchaVerifier);
+
       // Proceed with the SMS verification process
+      // ...
+
+      // Store the user's role in Firestore
+      const db = getFirestore();
+      await setDoc(doc(db, 'users', confirmationResult.user.uid), {
+        role: role,
+      });
+
+      // Navigate based on selected role
+      if (role === 'citizen') {
+        navigate('/create-patient');
+      } else if (role === 'doctor') {
+        navigate('/create-doctor');
+      }
     } catch (error) {
       const errorMessage = mapFirebaseErrorToCustomMessage(error.code);
       setError(errorMessage);

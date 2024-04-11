@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from './Button';
 import { Link } from 'react-router-dom';
+import {Button} from './Button'
 import './Navbar.css';
-import { useAuth } from '../contexts/AuthContext'; // Import the useAuth hook
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import axios from 'axios'; // Import Axios for making HTTP requests
+import { useAuth } from '../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Navbar() {
-  const { currentUser, logout } = useAuth(); // Access the current user object and logout function from the auth context
+  const { currentUser, logout } = useAuth();
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
-  const [avatar, setAvatar] = useState(null); // State to store the avatar
-  const navigate = useNavigate(); // Initialize navigate
+  const [userAvatar, setUserAvatar] = useState(null);
+  const navigate = useNavigate();
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+
   const showButton = () => {
     if (window.innerWidth <= 960) {
       setButton(false);
@@ -27,98 +28,103 @@ function Navbar() {
     showButton();
   }, []);
 
-  useEffect(() => {
-    if (currentUser) {
-      // Call the function to fetch avatar when currentUser changes
-      fetchPatientData(currentUser.uid);
-    }
-  }, [currentUser]); // Fetch patient data when currentUser changes
-
-  const fetchPatientData = async (firebaseUid) => {
-    try {
-      const response = await axios.get(`http://localhost:8000/backend/patients?firebaseUid=${firebaseUid}`);
-      const patientData = response.data[0]; 
-      // Assuming the response contains patient data
-      // console.log(patientData)
-      // Here you can extract the avatar URL from patientData and set it to the state
-      const avatarUrl = patientData.avatar;
-      setAvatar(avatarUrl);
-    } catch (error) {
-      console.error('Error fetching patient data:', error);
-    }
-  };
-
   const handleLogout = async () => {
     try {
       await logout();
-      setAvatar(""); 
-      navigate('/'); 
+      setUserAvatar("")
+      navigate('/'); // Redirect to home page after logout
     } catch (error) {
       console.error('Logout failed:', error);
     }
   };
+
+  useEffect(() => {
+    const fetchUserAvatar = async (firebaseUid) => {
+      try {
+        if (currentUser) {
+          let endpointUrl = '';
   
+          if (currentUser.displayName === 'doctor') {
+            endpointUrl = `http://localhost:8000/backend/doctors?firebaseUid=${firebaseUid}`;
+          } else if (currentUser.displayName === 'citizen') {
+            endpointUrl = `http://localhost:8000/backend/patients?firebaseUid=${firebaseUid}`;
+          } else {
+            console.error('Invalid user role:', currentUser.displayName);
+            return;
+          }
+  
+          const response = await axios.get(endpointUrl);
+          const responseData = response.data[0];
+  
+          if (responseData && responseData.avatar) {
+            setUserAvatar(responseData.avatar);
+          } else {
+            console.error('Avatar URL not found in response data');
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching user avatar:', error);
+      }
+    };
+
+    if (currentUser) {
+      fetchUserAvatar(currentUser.uid);
+    }
+  }, [currentUser]);
 
   return (
-    <>
-      <nav className='navbar'>
-        <div className='navbar-container'>
-          <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            HEDOC
-          </Link>
-          <div className='menu-icon' onClick={handleClick}>
-            <ion-icon className={click ? "close-outline fa-times": "menu-outline fa-times"} ></ion-icon>
-          </div>
-          <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+    <nav className='navbar'>
+      <div className='navbar-container'>
+        <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+          HEDOC
+        </Link>
+        <div className='menu-icon' onClick={handleClick}>
+          <ion-icon className={click ? "close-outline fa-times" : "menu-outline fa-times"} ></ion-icon>
+        </div>
+        <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+          <li className='nav-item'>
+            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+              Home
+            </Link>
+          </li>
+          {currentUser && currentUser.displayName === 'doctor' ? (
             <li className='nav-item'>
-              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                Home
-              </Link>
-            </li>
-            <li className='nav-item'>
-              <Link
-                to='/dashboard'
-                className='nav-links'
-                onClick={closeMobileMenu}
-              >
+              <Link to='/doctor-dashboard' className='nav-links' onClick={closeMobileMenu}>
                 Dashboard
               </Link>
             </li>
+          ) : (
             <li className='nav-item'>
-              <Link
-                to='/games'
-                className='nav-links'
-                onClick={closeMobileMenu}
-              >
-                Documents
+              <Link to='/dashboard' className='nav-links' onClick={closeMobileMenu}>
+                Dashboard
               </Link>
             </li>
-            <li className='nav-item'>
-              <Link
-                to='/about'
-                className='nav-links'
-                onClick={closeMobileMenu}
-              >
-                About
-              </Link>
-            </li>
+          )}
+          <li className='nav-item'>
+            <Link to='/games' className='nav-links' onClick={closeMobileMenu}>
+              Documents
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link to='/about' className='nav-links' onClick={closeMobileMenu}>
+              About
+            </Link>
+          </li>
 
-            {currentUser && avatar && ( 
-              <li className='nav-item'>
-                <div className="profile-container" onClick={handleClick}>
-                  <img src={avatar} alt="Profile" className="profile-pic" />
-                  <div className="profile-dropdown" style={{ display: click ? 'block' : 'none' }}>
-                    <button className="logout-button" onClick={handleLogout}>Logout</button>
-                  </div>
+          {currentUser &&  (
+            <li className='nav-item'>
+              <div className="profile-container" onClick={handleClick}>
+                <img src={userAvatar} alt="Profile" className="profile-pic" />
+                <div className="profile-dropdown" style={{ display: click ? 'block' : 'none' }}>
+                  <button className="logout-button" onClick={handleLogout}>Logout</button>
                 </div>
-              </li>
-            )}
-            {!currentUser && button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
-          </ul>
-          
-        </div>
-      </nav>
-    </>
+              </div>
+            </li>
+          )}
+          {!currentUser && button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
+        </ul>
+      </div>
+    </nav>
   );
 }
 

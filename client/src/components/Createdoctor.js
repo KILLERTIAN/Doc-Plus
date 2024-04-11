@@ -67,16 +67,17 @@ function Createdoctor() {
             formData.append('availability', doctor.availability);
             formData.append('bio', doctor.bio);
             formData.append('avatar', doctor.avatar);
-            formData.append('educations', doctor.educations);
-            formData.append('work_experience', doctor.work_experience);
+            formData.append('educations', JSON.stringify(doctor.educations));
+            formData.append('work_experience', JSON.stringify(doctor.work_experience));
             formData.append('firebaseUid', doctor.firebaseUid);
-
+    
             await axios.post('http://localhost:8000/backend/doctors', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-
+    
+            // Reset form fields
             setDoctor({
                 d_id: '',
                 d_name: '',
@@ -94,7 +95,7 @@ function Createdoctor() {
                 avatar: null,
                 firebaseUid: currentUser ? currentUser.uid : ''
             });
-            navigate('/dashboard');
+            navigate('/doctor-dashboard');
             window.location.reload();
         } catch (error) {
             console.error('Error creating doctor:', error);

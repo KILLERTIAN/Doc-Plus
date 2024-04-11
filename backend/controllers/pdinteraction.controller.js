@@ -80,16 +80,18 @@ export const getInteraction = async (req, res, next) => {
 };
 
 export const getInteractions = async (req, res, next) => {
-  const { page = 1, limit = 20, patientId } = req.query; // Extract patientId from query params
+  const { page = 1, limit = 20, patientId, doctorId } = req.query;
 
   try {
-    let query = {}; // Initialize empty query object
+    let query = {}; 
+
     if (patientId) {
-      // If patientId is provided, filter interactions by patientId
       query = { p_id: patientId };
+    } else if (doctorId) {
+      query = { d_id: doctorId };
     }
 
-    // Fetch interactions based on query
+    // Fetch interactions based on the query
     const interactions = await PDInteraction.find(query)
       .skip((page - 1) * limit)
       .limit(parseInt(limit));

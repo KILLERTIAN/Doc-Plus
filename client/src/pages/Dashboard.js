@@ -12,6 +12,7 @@ function Dashboard() {
   const [doctors, setDoctors] = useState([]);
   const [interactions, setInteractions] = useState([]);
   const [ongoingTreatments, setOngoingTreatments] = useState([]);
+  const [ filters,setFilters] = useState({});
 
   // Function to calculate time remaining for a treatment
 const calculateTimeRemaining = (treatment) => {
@@ -21,6 +22,14 @@ const calculateTimeRemaining = (treatment) => {
   const timeDiff = endDate - now;
   const daysRemaining = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); // Convert milliseconds to days and round up
   return `${daysRemaining} days`;
+};
+const handleFilterChange = (name, value) => {
+  setFilters((prevFilters) => ({
+    ...prevFilters,
+    [name]: value,
+  }));
+  // Perform filtering logic here based on the updated filters state
+  console.log("Filters:", filters);
 };
 
 
@@ -163,7 +172,7 @@ const fetchData = async (firebaseUid) => {
           </div>
           <div className="userPastRecords">
             <h2>Past Doctor Visits</h2>
-            <Filter />
+            <Filter onFilterChange={handleFilterChange} />
             <div className="accordionContainer">
               {interactions.map(interaction => (
                 <div key={interaction._id}>

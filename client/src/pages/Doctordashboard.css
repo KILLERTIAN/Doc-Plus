@@ -1,0 +1,143 @@
+.doctorDashboardMainContainer {
+    display: flex;
+    position: relative;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+  }
+  
+  .doctorDashboardContainer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 20px;
+    border: 1.5px solid #ddd;
+    border-radius: 10px;
+    flex-direction: column;
+  }
+  
+  .doctorInfoContainer {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    width: 100%;
+    height: 120px;
+    border-bottom: 1.5px solid #ddd;
+    justify-content: space-between;
+  }
+  
+  .profileImageName {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+  }
+  
+  .profileImageSection {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+  }
+  
+  .profileImageSection img {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+  }
+  
+  .doctorNameId {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .doctorNameId span {
+    font-size: 2em;
+  }
+  
+  .doctorDetails {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .doctorDetails ul {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin: 10px;
+  }
+  
+  .doctorDetails ul li {
+    list-style: none;
+    margin: 5px;
+    font-weight: 600;
+  }
+  
+  .patientInteractionSection {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+  }
+  
+  .patientInteractionSection h2 {
+    margin: 10px;
+    font-size: 1.5em;
+    position: sticky;
+  }
+  
+  .accordionContainer {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 94%;
+    margin-bottom: 10px;
+  }
+  
+  .fiterTime {
+    margin: 10px;
+    font-size: 1.2em;
+  }
+  
+  .accordionSummary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 20px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  .accordionSummary p {
+    display: flex;
+    align-items: center;
+  }
+  
+  .accordianDetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+  }
+  
+  .accordionArrow {
+    margin: 5px 10px;
+    transition: transform 0.3s ease-in-out;
+  }

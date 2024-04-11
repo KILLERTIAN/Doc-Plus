@@ -15,10 +15,9 @@ const createUser = asyncHandler(async (req, res) => {
     p_address,
     avatar,
     Allergies,
-    Family_History // Add new fields here
+    Family_History 
   } = req.body;
 
-  // Check if any required field is empty
   if (
     [
       firebaseUid,
@@ -29,7 +28,7 @@ const createUser = asyncHandler(async (req, res) => {
       p_bloodgroup,
       p_address,
       Allergies,
-      Family_History // Add new fields here
+      Family_History 
     ].some((field) => field?.trim() === "")
   ) {
     throw new createError(400, "All fields are required");
@@ -126,4 +125,3 @@ export const getUsers = async (req, res, next) => {
     next(err);
   }
 };
-
