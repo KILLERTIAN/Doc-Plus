@@ -13,13 +13,15 @@ function HeroSection() {
         <div className='hero-container'>
             
             <div className="hero-gradient"></div>
+            <img src="images/Bg-2.jpg" alt="backround" />
+
             <div className="hero-text">
                 <h1><span1>ALL your</span1> <br/> Health related documents <br />
                     <span> At one place</span><br />
                 </h1>
                 <p><span2>Find your documents now </span2></p>
                 <p><span2>Start a new Medial checkup here</span2></p>
-                <Link to="/register" className='hero-free-trial-button'><button>Get started</button></Link>
+                <Link to="/sign-up" className='hero-free-trial-button'><button>Get started</button></Link>
             </div>
 
 
