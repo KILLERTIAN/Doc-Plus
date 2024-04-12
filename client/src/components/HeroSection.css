@@ -1,20 +1,23 @@
 * {
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
     font-family: 'Outfit', sans-serif;
 }
 
 .hero-container {
-    height: 90vh;
+    height: 80%;
     width: 100%;
     display: flex;
+    margin-left: 10px;
+    margin-right: 20px;
     /* position: absolute; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
     object-fit: contain;
     /* box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2); */
-    background: linear-gradient(to right, #4ca9ff62, #5ee26f7c);
+    background-image: url('/public/images/bg.jpg');
+
 }
 
 /* .hero-container img {
@@ -42,7 +45,7 @@
 
 .hero-text h1 {
     /* background: linear-gradient(to right, #31f582, #2cd5f3); */
-    background: linear-gradient(to right, #af4fe7, #ff5c92, #ff5555, #ffb515);
+    background: linear-gradient(to right, #af4fe7, #ff5c92, #ff5555);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     font-size: 3.1em;
@@ -55,7 +58,7 @@
     margin: 10px 0;
     letter-spacing: 0.8px;
     /* color: #141414; */
-    background: linear-gradient(to right, #ff49f0, #ff7a2d, #16d2f3, #46bd56);
+    background: linear-gradient(to right, #ff49f0,#af4fe7, #ff5555);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     font-size: 1.6em;
