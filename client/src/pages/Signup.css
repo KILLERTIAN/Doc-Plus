@@ -40,7 +40,7 @@
     /* background: rgba(255, 255, 255, 0.15); */
     border-radius: 10px;
     backdrop-filter: blur(15px);
-    color: #fff;
+    color: #ffffff;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     margin: 0 20px;
@@ -110,7 +110,7 @@
     flex-direction: column;
     /* height: 75vh; */
     width: 400px;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgb(127 127 127 / 15%);
     border-radius: 10px;
     backdrop-filter: blur(15px);
     color: #fff;
@@ -141,7 +141,7 @@
 }
 
 .sign-up-input::placeholder {
-    color: rgb(219, 219, 219);
+    color: rgb(245, 245, 245);
     font-weight: 100;
     letter-spacing: 1px;
 }
@@ -158,7 +158,6 @@
     letter-spacing: 1px;
   }
   
-  /* Optional: To style the input fields with errors */
   .sign-up-input.error {
     border-color: red;
   }

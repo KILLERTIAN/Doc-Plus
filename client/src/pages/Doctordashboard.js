@@ -63,8 +63,8 @@ function DoctorDashboard() {
             </div>
             <div className="doctorDetails">
               <ul>
-                <li>Specialization: {doctor.d_specialization}</li>
-                <li>Hospital: {doctor.d_hospital}</li>
+                <li>Gender : {doctor.d_gender}</li>
+                <li>Age : {doctor.d_age}</li>
               </ul>
               <ul>
                 <li>Qualifications: {doctor.d_qualifications}</li>
