@@ -18,6 +18,7 @@ function HeroSection() {
                     <span> At one place</span><br />
                 </h1>
                 <p><span2>Find your documents now </span2></p>
+                <p><span2>Start a new Medial checkup here</span2></p>
                 <Link to="/register" className='hero-free-trial-button'><button>Get started</button></Link>
             </div>
 
