@@ -77,7 +77,7 @@
 }
 
 .hero-text span1 {
-    background: linear-gradient(to right, #00d6a0, #1180ff);
+    background: linear-gradient(to right, #ff5555, #ff498f);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     font-size: 1.34em;
@@ -120,6 +120,9 @@
 }
 
 @media(width <300px) {
+    .hero-gradient{
+        margin-top: 0%;
+    }
     .hero-container {
         justify-content: flex-end;
         align-items: center;

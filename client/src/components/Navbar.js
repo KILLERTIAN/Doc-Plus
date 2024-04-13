@@ -76,9 +76,12 @@ function Navbar() {
     <nav className='navbar'>
       <div className='navbar-container'>
         <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-          HEDOC
+          DocPlus
         </Link>
         <div className='menu-icon' onClick={handleClick}>
+          <div class="menu-bar"></div>
+          <div class="menu-bar"></div>
+          <div class="menu-bar"></div>
           <ion-icon className={click ? "close-outline fa-times" : "menu-outline fa-times"} ></ion-icon>
         </div>
         <ul className={click ? 'nav-menu active' : 'nav-menu'}>

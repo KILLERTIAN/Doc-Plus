@@ -103,7 +103,7 @@ function Signup() {
     <body className='body'>
       <div className="MainContainer">
         <div className="introTextContainer">
-          <h1>New to HEDOC? </h1>
+          <h1>New to DocPlus? </h1>
           <div className="role-selection">
             <div
               className={`citizen-bar ${role === 'citizen' ? 'glowing-border active' : 'glowing-border'}`}

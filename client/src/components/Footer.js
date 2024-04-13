@@ -28,19 +28,18 @@ function Footer() {
       <div class='footer-links'>
         <div className='footer-link-wrapper'>
           <div class='footer-link-items'>
-            <h2>About Us</h2>
+            <h2> Important Links</h2>
             <Link to='/sign-up'>How it works</Link>
-            <Link to='/'>Testimonials</Link>
-            <Link to='/games'>Games</Link>
-            <Link to='/about'>Sources</Link>
+            <Link to='/dashboard'>Dashboard</Link>
+            <Link to='/doctor-dashboard'>Doctors With Us</Link>
+            <Link to='/document'>Documents</Link>
             <Link to='/about'>Terms of Service</Link>
           </div>
           <div class='footer-link-items'>
-            <h2>Contact Us</h2>
-            <Link to='/sign-up'>Contact</Link>
-            <Link to='/sign-up'>Support</Link>
-            <Link to='/sign-up'>Bug</Link>
-            <Link to='/sign-up'>Report</Link>
+            <h2>Connect With Us</h2>
+            <Link to='/about'>Contact Us</Link>
+            <Link to='/about'>Support</Link>
+            <Link to='/sign-up'>Feedback</Link>
           </div>
         </div>
         {/* <div className='footer-link-wrapper'>
@@ -50,7 +49,7 @@ function Footer() {
             <Link to='/games'>Minecraft</Link>
             <Link to='/games'>Play togther</Link>
             <Link to='/games'>Influencer</Link>
-          </div>
+          </div> */
           <div class='footer-link-items'>
             <h2>Social Media</h2>
             <Link to='/'>Instagram</Link>
@@ -58,18 +57,18 @@ function Footer() {
             <Link to='/'>Youtube</Link>
             <Link to='/'>Twitter</Link>
           </div>
-        </div> */}
+          }
       </div>
       <section class='social-media'>
         <div class='social-media-wrap'>
           <div class='footer-logo'>
             <Link to='/' className='social-logo'>
-              HEDOC
+              DocPlus
               {/* <i class='fab fa-typo3' /> */}
             </Link>
           </div>
-          <small class='website-rights'>HEDOC © 2024</small>
-          {/* <div class='social-icons'>
+          <small class='website-rights'>DocPlus © 2024</small>
+          { <div class='social-icons'>
             <Link
               class='social-icon-link facebook'
               to='/'
@@ -110,7 +109,7 @@ function Footer() {
             >
               <i class='fab fa-linkedin' />
             </Link>
-          </div> */}
+          </div> }
         </div>
       </section>
     </div>

@@ -135,7 +135,16 @@
     .NavbarItems {
       position: relative;
     }
-  
+    .menu-bar{
+    width: 35px;
+    height: 5px;
+    background-color: white;
+    margin: 3px;
+    }
+    .menu-icon{
+      align-content:baseline;
+      
+    }
     .nav-menu {
       display: flex;
       flex-direction: column;
