@@ -2,7 +2,9 @@ import React from 'react'
 
 function About() {
   return (
-    <div>About</div>
+    <div>About
+      <ion-icon name="menu-outline"></ion-icon>
+    </div>
   )
 }
 

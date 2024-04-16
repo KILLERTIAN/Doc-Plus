@@ -79,7 +79,16 @@
   }
   
   .menu-icon {
+    
     display: none;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+  .menu-icon ion-icon{
+    color: #fff;
+    font-size: 36px;
+  
   }
 
   .profile-container {
@@ -135,16 +144,7 @@
     .NavbarItems {
       position: relative;
     }
-    .menu-bar{
-    width: 35px;
-    height: 5px;
-    background-color: white;
-    margin: 3px;
-    }
-    .menu-icon{
-      align-content:baseline;
-      
-    }
+  
     .nav-menu {
       display: flex;
       flex-direction: column;
@@ -178,22 +178,20 @@
       border-radius: 0;
     }
   
-    .navbar-logo {
+    /* .navbar-logo {
       position: absolute;
       top: 0;
       left: 0;
       transform: translate(25%, 50%);
-    }
+    } */
   
     .menu-icon {
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 1000;
-      transform: translate(-100%, 60%);
-      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 0;
       cursor: pointer;
+      transition: 0.5s ;
     }
   
     .fa-times {

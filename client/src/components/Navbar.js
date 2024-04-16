@@ -79,10 +79,12 @@ function Navbar() {
           DocPlus
         </Link>
         <div className='menu-icon' onClick={handleClick}>
-          <div class="menu-bar"></div>
-          <div class="menu-bar"></div>
-          <div class="menu-bar"></div>
-          <ion-icon className={click ? "close-outline fa-times" : "menu-outline fa-times"} ></ion-icon>
+        {click ? (
+            <ion-icon className='fa-bars' name="close-outline"></ion-icon>
+          ) : (
+            <ion-icon className='fa-bars' name="menu-outline"></ion-icon>
+          )}
+          {/* <ion-icon className={click ? "close-outline fa-times" : "menu-outline fa-times"} ></ion-icon> */}
         </div>
         <ul className={click ? 'nav-menu active' : 'nav-menu'}>
           <li className='nav-item'>

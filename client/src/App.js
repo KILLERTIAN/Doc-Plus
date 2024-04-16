@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import Dashboard from './pages/Dashboard';
 import Signup from './pages/Signup';
+import About from './pages/About';
 import Createpatient from './components/Createpatient';
 import Login from './pages/Login';
 import Createdoctor from './components/Createdoctor';
@@ -18,7 +19,7 @@ function App() {
           <Route path='/dashboard' element={<Dashboard/>}/>
           <Route path='/doctor-dashboard' element={<DoctorDashboard/>}/>
           
-          {/* <Route path='/about' element={<About/>}/> */}
+          <Route path='/about' element={<About/>}/>
           <Route path="/create-patient" element={<Createpatient/>} />
           <Route path="/create-doctor" element={<Createdoctor/>} />
           <Route path='/sign-up' element={<Signup/>}/>
