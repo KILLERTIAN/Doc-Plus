@@ -1,4 +1,19 @@
-.mainAboutContainer{
-    display: flex;
-    height: 90vh;
+.content{
+    font-size: x-large;
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: center;
+}
+.main-bar{
+    width: 80%;
+    background-color: rgb(20, 17, 255);
+    height: 2px;
+    margin-left: 10%;
+}
+.head{
+    text-align: center;
+    color: rgb(20,17,255);
+}
+ques{
+    text-decoration: ;
 }
