@@ -33,7 +33,7 @@ function Footer() {
             <Link to='/dashboard'>Dashboard</Link>
             <Link to='/doctor-dashboard'>Doctors With Us</Link>
             <Link to='/document'>Documents</Link>
-            <Link to='/about'>Terms of Service</Link>
+            <Link to='/about'>Terms and Conditions</Link>
           </div>
           <div class='footer-link-items'>
             <h2>Connect With Us</h2>
