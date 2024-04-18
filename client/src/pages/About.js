@@ -28,6 +28,34 @@ const About = () => {
       question: 'What is DocPlus?',
       answer: 'DocPlus is a Next Generation Health Vault designed to securely store and manage various types of medical information such as prescriptions, lab reports, X-rays, bills, and more. It ensures complete confidentiality and easy accessibility from any location.',
     },
+    {
+      question: 'Why Should use DocPlus?',
+      answer: 'Maintaining your health records like prescriptions, lab test reports, immunization details, information about your allergies, medical images etc. DocPlus can help you in managing your health efficiently. DocPlus can help you in: Improving your awareness about your health. Having easy access to your health records. Sharing your health records with your doctors, family and friends. Printing your all or selected health records.',
+    },
+    {
+      question: 'How Can DocPlus help in Improving my quality of Healthcare?',
+      answer: 'DocPlus can help you to manage health and wellness information. This information include lab results, prescriptions, medications, medical images, vitals etc. Managing these at one central place (accessible from anywhere anytime).',
+    },
+    {
+      question: 'How will DocPlus saves your time and Money?',
+      answer: 'It helps you by saving your time to find health records instantly. When your doctors have complete, accurate and timely information about your health history, they can make better, more informed decisions. This makes care safer and can also reduce the need for more and increasingly expensive care in the future.',
+    },
+    {
+      question: 'Do I have to pay to use DocPlus?',
+      answer: 'No, DocPlus web Service are free of cost for all.',
+    },
+    {
+      question: 'Is My Health Information in DocPlus safe and secure?',
+      answer: 'Yes, your health information in DocPlus is absolutely safe and secure. Only you have access to it.',
+    },
+    {
+      question: 'How Many Documents/Reports/Medical Images can I store in my profile at DocPlus?',
+      answer: 'There is no limit on the number of documents / reports / medical images that can be stored in my profile at DocPlus.',
+    },
+    {
+      question: 'For How Long Would My Health Information remain stored in DocPlus?',
+      answer: 'Your health information would remain stored in Doc Plus for life time, from the date of upload.',
+    },
     // Add more FAQs as needed
   ];
 
