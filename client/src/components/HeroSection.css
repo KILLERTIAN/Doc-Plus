@@ -50,9 +50,7 @@
 
 .hero-text h1 {
     /* background: linear-gradient(to right, #31f582, #2cd5f3); */
-    background: linear-gradient(to right, #af4fe7, #ff5c92, #ff5555);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
+    color: #fff;
     font-size: 3.1em;
     margin: 20px 0;
     margin-top: 0;
@@ -63,25 +61,21 @@
     margin: 10px 0;
     letter-spacing: 0.8px;
     /* color: #141414; */
-    background: linear-gradient(to right, #ff49f0,#af4fe7, #ff5555);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
+    color: #fff;
     font-size: 1.6em;
     font-weight: 600;
 }
 
 .hero-text span {
-    background: linear-gradient(to right, #ff498f, #ffa568, #ff62ff, #d857f1);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
+    color: #fff;
 }
 
-.hero-text span1 {
+/* .hero-text span1 {
     background: linear-gradient(to right, #ff5555, #ff498f);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     font-size: 1.34em;
-}
+} */
 
 .hero-free-trial-button {
     margin: 0;
@@ -97,7 +91,7 @@
     height: 10vh;
     width: 200px;
     /* background: rgb(255, 202, 87); */
-    background: linear-gradient(269deg, #b8eeff, #9dc8ff, #9dffe7, #89faa1);
+    background: linear-gradient(269deg, #ff0000 , #fff);
     border: none;
     color: #111;
     font-size: 1.5em;
@@ -107,16 +101,17 @@
     transition: 0.5s;
     letter-spacing: 0.05em;
     border-radius: 50px;
-    box-shadow: 2px 3px 10px #13f731,
-        -1px -2px 5px #87b7ff;
-    transition: 0.25s;
+    box-shadow: 2px 3px 10px #ff0000,
+        -1px -2px 5px #fff;
+    transition: 0.75s;
 }
 
 .hero-free-trial-button button:hover {
-    background: linear-gradient(269deg, #b8dfff, #9db7ff, #9dffe7, #89fab4);
+    background: linear-gradient(269deg, #fff, #ff0000);
     color: #111;
-    box-shadow: 2px 3px 30px #14ff89,
-        -1px -2px 20px #4cbafa;
+    box-shadow: 2px 3px 30px #ff0000,
+        -1px -2px 20px #fff;
+        transition: 0.5s;
 }
 
 @media(width <300px) {
