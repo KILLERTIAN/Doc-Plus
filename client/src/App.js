@@ -10,6 +10,7 @@ import Createpatient from './components/Createpatient';
 import Login from './pages/Login';
 import Createdoctor from './components/Createdoctor';
 import DoctorDashboard from './pages/Doctordashboard';
+import Documents from './pages/Documents';
 function App() {
   return (
     <Router>
@@ -22,6 +23,7 @@ function App() {
           <Route path='/about' element={<About/>}/>
           <Route path="/create-patient" element={<Createpatient/>} />
           <Route path="/create-doctor" element={<Createdoctor/>} />
+          <Route path="/documents" element={<Documents/>} />
           <Route path='/sign-up' element={<Signup/>}/>
           <Route path='/login' element={<Login/>}/>
         </Routes>
