@@ -3,20 +3,20 @@
     flex-direction: column;
     align-items: center;
     padding: 50px;
-    height: 90vh;
+    width: 100%;
   }
   
   .document-options {
     display: flex;
     justify-content: space-around;
     width: 100%;
-    max-width: 800px;
     margin-top: 30px;
   }
   
   .document-option {
     flex: 1;
     margin: 0 10px;
+    width: 45%; /* Adjusted width to fit two options per row */
   }
   
   .option-card {
@@ -46,18 +46,33 @@
   }
   
   .image-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     margin-top: 20px;
+    width: 100%;
   }
-  
+  .image-section h3{
+    font-size: 1.4em;
+    margin: 20px;
+  }
   .images-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    /* flex-wrap: wrap; */
     gap: 20px;
+    width: 100%; 
   }
   
   .images-container img {
+    /* display: flex; */
+    flex: 1;
     max-width: 200px;
+    height: auto;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
   }
   
