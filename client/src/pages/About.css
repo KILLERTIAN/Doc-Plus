@@ -111,7 +111,19 @@
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-.policy-cont.policy-list, li{
-    font-size: 1.2em;
+.policy-cont{
+    font-size: 1.3rem;
     margin: 5px;
+}
+.policy-list{
+  font-size: 1.3rem;
+  margin: 5px;
+}
+.list-head{
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.faq-question.faq-answer{
+  font-size: 0.5em;
 }

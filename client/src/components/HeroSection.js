@@ -17,7 +17,7 @@ function HeroSection() {
 
             <div className="hero-text">
                 <h1><span1>ALL your</span1> <br/> Health related documents <br />
-                    <span> At one place</span><br />
+                    <span> at one place</span><br />
                 </h1>
                 <p><span2>Find your documents now </span2></p>
                 <Link to="/sign-up" className='hero-free-trial-button'><button>Get started</button></Link>
