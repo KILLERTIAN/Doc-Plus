@@ -48,31 +48,63 @@
   .image-section {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    position: relative;
     margin-top: 20px;
     width: 100%;
   }
-  .image-section h3{
+  
+  .image-section h3 {
     font-size: 1.4em;
-    margin: 20px;
+    margin-bottom: 20px;
   }
+  
   .images-container {
     display: flex;
     justify-content: space-evenly;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap; /* Ensure images wrap to new line if space is limited */
     gap: 20px;
-    width: 100%; 
+    width: 100%;
   }
   
   .images-container img {
-    /* display: flex; */
-    flex: 1;
     max-width: 200px;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .images-container img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .custom-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+  }
+  
+  .custom-lightbox img {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 8px;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #fff;
     cursor: pointer;
   }
   
