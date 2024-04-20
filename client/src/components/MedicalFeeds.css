@@ -1,0 +1,82 @@
+.medical-feeds-container {
+    padding: 20px;
+  }
+  
+  .medical-feeds-container h2 {
+    color: #398fff;
+    text-align: center;
+    margin: 10px 10px 20px;
+  }
+  
+  .feeds-list {
+    width: 100%;
+  }
+  
+  .feed-item {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  
+  .feed-preview {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+  }
+  
+  .feed-image {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-right: 15px;
+  }
+  
+  .feed-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .feed-content {
+    flex: 1;
+  }
+  
+  .feed-title {
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 8px;
+  }
+  
+  .feed-description {
+    font-size: 14px;
+    color: #666666;
+  }
+  
+  .full-post {
+    padding: 15px;
+    background-color: #f9feff;
+    border-top: 1px solid #ccc;
+  }
+  
+  .full-post p,
+  .full-post ul,
+  .full-post h4 {
+    margin-bottom: 10px;
+  }
+  .full-post ul li{
+    margin-left: 20px;
+  }
+  .images-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+  
+  .images-container img {
+    max-width: 30%;
+    border-radius: 8px;
+  }
+  
