@@ -92,7 +92,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    ;
+    
 }
 
 .userSideBar {
@@ -165,19 +165,31 @@
     display: flex;
     position: relative;
     width: 100%;
-    min-height: 90vh;
+    min-height: 80vh;
+    max-height: 90vh;
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
     /* justify-content: center; */
     /* height: 100%; */
 }
-
+.userPastRecords .headingandfilter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    background: #fff;
+}
 .userPastRecords h2 {
     margin: 10px;
     font-size: 1.5em;
     position: sticky;
 }
+
 
 .accordionContainer {
     display: flex;

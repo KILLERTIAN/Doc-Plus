@@ -76,7 +76,8 @@ function Navbar() {
     <nav className='navbar'>
       <div className='navbar-container'>
         <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-          DocPlus
+          <img src="/images/docpluslogo.png" alt="logo" className='logo' />
+          Doc Plus
         </Link>
         <div className='menu-icon' onClick={handleClick}>
         {click ? (
@@ -84,7 +85,6 @@ function Navbar() {
           ) : (
             <ion-icon className='fa-bars' name="menu-outline"></ion-icon>
           )}
-          {/* <ion-icon className={click ? "close-outline fa-times" : "menu-outline fa-times"} ></ion-icon> */}
         </div>
         <ul className={click ? 'nav-menu active' : 'nav-menu'}>
           <li className='nav-item'>
@@ -126,7 +126,10 @@ function Navbar() {
               </div>
             </li>
           )}
-          {!currentUser && button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
+          <div onClick={closeMobileMenu}>
+          {!currentUser && button && <Button  buttonStyle='btn--outline'>SIGN UP</Button>}
+          </div>
+          
         </ul>
       </div>
     </nav>

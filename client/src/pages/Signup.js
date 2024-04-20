@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Signup.css';
 import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signInWithPhoneNumber, updateProfile } from 'firebase/auth';
-import { setDoc, doc, getFirestore } from 'firebase/firestore'; // Import necessary functions from firebase/firestore
+import { setDoc, doc, getFirestore } from 'firebase/firestore'; 
 
 function Signup() {
   const [email, setEmail] = useState('');
@@ -13,21 +13,16 @@ function Signup() {
   const [role, setRole] = useState('citizen');
   const navigate = useNavigate();
 
-  const handleSignupWithEmail = async () => {
+  const handleSignupWithEmail = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
     try {
       const auth = getAuth();
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // Store the user's role in the Firebase Authentication user data
       await updateProfile(user, { displayName: role });
 
-      // Navigate based on selected role
-      if (role === 'citizen') {
-        navigate('/create-patient');
-      } else if (role === 'doctor') {
-        navigate('/create-doctor');
-      }
+      navigate(getRedirectPath());
     } catch (error) {
       const errorMessage = mapFirebaseErrorToCustomMessage(error.code);
       setError(errorMessage);
@@ -41,18 +36,10 @@ function Signup() {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
 
-      // Store the user's role in Firestore
       const db = getFirestore();
-      await setDoc(doc(db, 'users', user.uid), {
-        role: role,
-      });
+      await setDoc(doc(db, 'users', user.uid), { role });
 
-      // Navigate based on selected role
-      if (role === 'citizen') {
-        navigate('/create-patient');
-      } else if (role === 'doctor') {
-        navigate('/create-doctor');
-      }
+      navigate(getRedirectPath());
     } catch (error) {
       const errorMessage = mapFirebaseErrorToCustomMessage(error.code);
       setError(errorMessage);
@@ -62,24 +49,13 @@ function Signup() {
   const handleSignupWithMobile = async () => {
     try {
       const auth = getAuth();
-      const recaptchaVerifier = ''; // You need to initialize reCAPTCHA verifier if required
+      const recaptchaVerifier = ''; 
       const confirmationResult = await signInWithPhoneNumber(auth, phoneNumber, recaptchaVerifier);
 
-      // Proceed with the SMS verification process
-      // ...
-
-      // Store the user's role in Firestore
       const db = getFirestore();
-      await setDoc(doc(db, 'users', confirmationResult.user.uid), {
-        role: role,
-      });
+      await setDoc(doc(db, 'users', confirmationResult.user.uid), { role });
 
-      // Navigate based on selected role
-      if (role === 'citizen') {
-        navigate('/create-patient');
-      } else if (role === 'doctor') {
-        navigate('/create-doctor');
-      }
+      navigate(getRedirectPath());
     } catch (error) {
       const errorMessage = mapFirebaseErrorToCustomMessage(error.code);
       setError(errorMessage);
@@ -99,17 +75,30 @@ function Signup() {
     }
   };
 
+  const getRedirectPath = () => {
+    switch (role) {
+      case 'citizen':
+        return '/create-patient';
+      case 'doctor':
+        return '/create-doctor';
+      case 'hospital':
+        return '/create-hospital';
+      default:
+        return '/';
+    }
+  };
+
   return (
     <body className='body'>
       <div className="MainContainer">
         <div className="introTextContainer">
-          <h1>New to DocPlus? </h1>
+          <h1>New to Doc Plus? </h1>
           <div className="role-selection">
             <div
               className={`citizen-bar ${role === 'citizen' ? 'glowing-border active' : 'glowing-border'}`}
               onClick={() => setRole('citizen')}
             >
-              Citizen
+              Patient
             </div>
             <div
               className={`doctor-bar ${role === 'doctor' ? 'glowing-border active' : 'glowing-border'}`}
@@ -117,36 +106,37 @@ function Signup() {
             >
               Doctor
             </div>
+            <div
+              className={`hospital-bar ${role === 'hospital' ? 'glowing-border active' : 'glowing-border'}`}
+              onClick={() => setRole('hospital')}
+            >
+              Hospital
+            </div>
           </div>
           <h4>Already a user ? <Link to="/login" className='Loginlink'> Login </Link> here.</h4>
         </div>
         <div className="loginContainer">
           <h2 className="welcometext">WELCOME</h2>
-          <input
-            className='sign-up-input'
-            type="email"
-            placeholder='Enter your email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            className='sign-up-input'
-            type="password"
-            placeholder='Enter your password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {showPhoneNumberInput && (
+          <form onSubmit={handleSignupWithEmail}>
             <input
               className='sign-up-input'
-              type="tel"
-              placeholder='Enter your phone number'
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
+              type="email"
+              placeholder='Enter your email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
-          )}
-          {error && <p className="error">{error}</p>}
-          <button className="signup" onClick={handleSignupWithEmail}>Sign Up</button>
+            <input
+              className='sign-up-input'
+              type="password"
+              placeholder='Enter your password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            {error && <p className="error">{error}</p>}
+            <button type="submit" className="signup">Sign Up</button>
+          </form>
 
           <div className="dividerLine">
             <div className="divider"></div>

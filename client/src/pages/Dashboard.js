@@ -169,8 +169,11 @@ const fetchData = async (firebaseUid) => {
             </section>
           </div>
           <div className="userPastRecords">
+            <div className="headingandfilter">
             <h2>Past Doctor Visits</h2>
             <Filter onFilterChange={handleFilterChange} />
+            </div>
+            
             <div className="accordionContainer">
               {interactions.map(interaction => (
                 <div key={interaction._id}>

@@ -4,7 +4,7 @@ import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 
 const Documents = () => {
-  const [showTestResults, setShowTestResults] = useState(false);
+  const [showTestResults, setShowTestResults] = useState(true);
   const [showPrescriptions, setShowPrescriptions] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
@@ -75,7 +75,7 @@ const Documents = () => {
         <div className="image-section">
           <h3>Prescription Images</h3>
           <div className="images-container">
-            {['pre1.png', 'pre2.jpeg', 'pre3.jpg', 'pre4.jpeg'].map((imageName, index) => (
+            {['pre1.png', 'pre2.jpeg', 'pre3.jpg', 'pre5.jpg'].map((imageName, index) => (
               <img
                 key={index}
                 src={`/images/${imageName}`}
@@ -84,7 +84,7 @@ const Documents = () => {
                   '/images/pre1.png',
                   '/images/pre2.jpeg',
                   '/images/pre3.jpg',
-                  '/images/pre4.jpeg',
+                  '/images/pre5.jpg',
                 ])}
               />
             ))}

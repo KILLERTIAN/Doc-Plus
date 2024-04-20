@@ -2,29 +2,13 @@ import React from 'react';
 import './Footer.css';
 // import { Button } from './Button';
 import { Link } from 'react-router-dom';
+import { IonIcon } from '@ionic/react'; // Import IonIcon from @ionic/react
+import { logoFacebook, logoInstagram, logoYoutube, logoTwitter, logoLinkedin } from 'ionicons/icons'; // Import specific Ionicons
 
 function Footer() {
   return (
     <div className='footer-container'>
-      <section className='footer-subscription'>
-        {/* <p className='footer-subscription-heading'>
-          Join now for better Health
-        </p> */}
-        {/* <p className='footer-subscription-text'>
-          You can unsubscribe at any time.
-        </p> */}
-        {/* <div className='input-areas'>
-          <form>
-            <input
-              className='footer-input'
-              name='email'
-              type='email'
-              placeholder='Your Email'
-            />
-            <Button buttonStyle='btn--primary'>Subscribe</Button>
-          </form>
-        </div> */}
-      </section>
+      
       <div class='footer-links'>
         <div className='footer-link-wrapper'>
           <div class='footer-link-items'>
@@ -41,74 +25,33 @@ function Footer() {
             <Link to='/about'>Support</Link>
             <Link to='/sign-up'>Feedback</Link>
           </div>
-        </div>
-        {/* <div className='footer-link-wrapper'>
-          <div class='footer-link-items'>
-            <h2>Games</h2>
-            <Link to='/games'>Suggest games</Link>
-            <Link to='/games'>Minecraft</Link>
-            <Link to='/games'>Play togther</Link>
-            <Link to='/games'>Influencer</Link>
-          </div> */
           <div class='footer-link-items'>
             <h2>Social Media</h2>
             <Link to='/'>Instagram</Link>
             <Link to='/'>Facebook</Link>
             <Link to='/'>Youtube</Link>
             <Link to='/'>Twitter</Link>
+            <Link to='/'>LinkedIn</Link>
           </div>
-          }
+        </div>
+
       </div>
       <section class='social-media'>
         <div class='social-media-wrap'>
           <div class='footer-logo'>
             <Link to='/' className='social-logo'>
+            <img src="/images/docpluslogo.png" alt="logo"  />
               DocPlus
-              {/* <i class='fab fa-typo3' /> */}
+              
             </Link>
           </div>
-          <small class='website-rights'>DocPlus © 2024</small>
+          <small class='website-rights'>DocPlus © 2024 &nbsp;&nbsp; All rights reserved</small>
           { <div class='social-icons'>
-            <Link
-              class='social-icon-link facebook'
-              to='/'
-              target='_blank'
-              aria-label='Facebook'
-            >
-              <i class='fab fa-facebook-f' />
-            </Link>
-            <Link
-              class='social-icon-link instagram'
-              to='/'
-              target='_blank'
-              aria-label='Instagram'
-            >
-              <i class='fab fa-instagram' />
-            </Link>
-            <Link
-              class='social-icon-link youtube'
-              to='/'
-              target='_blank'
-              aria-label='Youtube'
-            >
-              <i class='fab fa-youtube' />
-            </Link>
-            <Link
-              class='social-icon-link twitter'
-              to='/'
-              target='_blank'
-              aria-label='Twitter'
-            >
-              <i class='fab fa-twitter' />
-            </Link>
-            <Link
-              class='social-icon-link twitter'
-              to='/'
-              target='_blank'
-              aria-label='LinkedIn'
-            >
-              <i class='fab fa-linkedin' />
-            </Link>
+          <IonIcon icon={logoFacebook} className='social-icon-link' />
+            <IonIcon icon={logoInstagram} className='social-icon-link' />
+            <IonIcon icon={logoYoutube} className='social-icon-link' />
+            <IonIcon icon={logoTwitter} className='social-icon-link' />
+            <IonIcon icon={logoLinkedin} className='social-icon-link' />
           </div> }
         </div>
       </section>

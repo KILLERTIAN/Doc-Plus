@@ -10,7 +10,8 @@ function Login() {
   const [error, setError] = useState(null);
   const [role, setRole] = useState('citizen');
   const navigate = useNavigate();
-
+  
+  
   const handleLogin = async () => {
     try {
       const auth = getAuth();
@@ -27,7 +28,15 @@ function Login() {
       setError(errorMessage);
     }
   };
-
+  const handleFormSubmit = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+    try {
+      await handleLogin(); // Call your login function when form is submitted
+    } catch (error) {
+      // Handle any submission errors if needed
+      console.error('Login failed:', error);
+    }
+  };
   const handleLoginWithGoogle = async () => {
     try {
       const auth = getAuth();
@@ -71,12 +80,14 @@ function Login() {
       <div className="MainContainer">  
         <div className="loginContainer">
           <h2 className="welcometext">WELCOME</h2>
+          <form onSubmit={handleFormSubmit}>
           <input
             className='sign-up-input'
             type="email"
             placeholder='Enter your email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
           <input
             className='sign-up-input'
@@ -84,9 +95,14 @@ function Login() {
             placeholder='Enter your password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
           {error && <p className="error">{error}</p>}
-          <button className="signup" onClick={handleLogin}>Login</button>
+          <button className="signup" type="submit">Login</button>
+</form>
+
+          
+
 
           <div className="dividerLine">
             <div className="divider"></div>

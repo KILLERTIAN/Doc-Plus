@@ -74,7 +74,8 @@
 }
 
 .citizen-bar,
-.doctor-bar {
+.doctor-bar ,
+.hospital-bar{
   width: 50%;
   background-color: transparent; /* Updated */
   border-radius: 10px;
@@ -90,7 +91,7 @@
 
 .glowing-border {
   border: 2.5px solid transparent;
-  transition: border-color 0.5s ease-in-out;
+  transition: border-color 0.25s ease-in-out;
 }
 
 .glowing-border.active {
@@ -118,7 +119,12 @@
     letter-spacing: 0.4rem;
     margin: 0 20px;
 }
-
+.loginContainer form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 .welcometext {
     margin: 20px 30px;
     margin-top: 30px;
