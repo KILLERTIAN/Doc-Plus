@@ -25,27 +25,27 @@ const FaqItem = ({ question, answer }) => {
 const About = () => {
   const faqs = [
     {
-      question: 'What is DocPlus?',
+      question: 'What is Doc Plus?',
       answer: 'DocPlus is a Next Generation Health Vault designed to securely store and manage various types of medical information such as prescriptions, lab reports, X-rays, bills, and more. It ensures complete confidentiality and easy accessibility from any location.',
     },
     {
-      question: 'Why Should use DocPlus?',
+      question: 'Why Should use Doc Plus?',
       answer: 'Maintaining your health records like prescriptions, lab test reports, immunization details, information about your allergies, medical images etc. DocPlus can help you in managing your health efficiently. DocPlus can help you in: Improving your awareness about your health. Having easy access to your health records. Sharing your health records with your doctors, family and friends. Printing your all or selected health records.',
     },
     {
-      question: 'How Can DocPlus help in Improving my quality of Healthcare?',
+      question: 'How Can Doc Plus help in Improving my quality of Healthcare?',
       answer: 'DocPlus can help you to manage health and wellness information. This information include lab results, prescriptions, medications, medical images, vitals etc. Managing these at one central place (accessible from anywhere anytime).',
     },
     {
-      question: 'How will DocPlus saves your time and Money?',
+      question: 'How will Doc Plus saves your time and Money?',
       answer: 'It helps you by saving your time to find health records instantly. When your doctors have complete, accurate and timely information about your health history, they can make better, more informed decisions. This makes care safer and can also reduce the need for more and increasingly expensive care in the future.',
     },
     {
-      question: 'Do I have to pay to use DocPlus?',
+      question: 'Do I have to pay to use Doc Plus?',
       answer: 'No, DocPlus web Service are free of cost for all.',
     },
     {
-      question: 'Is My Health Information in DocPlus safe and secure?',
+      question: 'Is My Health Information in Doc Plus safe and secure?',
       answer: 'Yes, your health information in DocPlus is absolutely safe and secure. Only you have access to it.',
     },
     {
@@ -70,9 +70,9 @@ const About = () => {
   return (
     <div className="mainAboutContainer">
       <div className="section">
-        <h1>About DocPlus</h1>
+        <h1>About Doc Plus</h1>
         <p>
-          DocPlus is a unique platform where you can store and manage comprehensive medical data, ensuring privacy and accessibility. Our mission is to provide a seamless experience for managing your health information.
+          Doc Plus is a unique platform where you can store and manage comprehensive medical data, ensuring privacy and accessibility. Our mission is to provide a seamless experience for managing your health information.
         </p>
          <h2>Key Features:</h2>
         <ul className="features-list">
