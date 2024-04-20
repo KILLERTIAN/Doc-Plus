@@ -8,7 +8,7 @@
     top: 30%; /* Position the top of the loader at the vertical center of the viewport */
     left: 50%; /* Position the left side of the loader at the horizontal center of the viewport */
     transform: translate(-40%, -40%); /* Use translate to center the loader precisely */
-    z-index: 9999; /* Ensure the loader appears on top of other content */
+    z-index: 995; /* Ensure the loader appears on top of other content */
   }
   
   .sw-loader__holder {

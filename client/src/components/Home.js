@@ -1,5 +1,6 @@
 import React from 'react';
 import HeroSection from './HeroSection';
+import Appointment from './Appointment';
 
 
 function Home() {
@@ -7,6 +8,7 @@ function Home() {
     <div className="mainHomeBody">
         <div className="mainHomeContainer">
             <HeroSection/>
+            <Appointment/>
         </div>
     </div>
   )
