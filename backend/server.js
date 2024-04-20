@@ -6,6 +6,7 @@ import authRoute from './routes/auth.js';
 import patientRoute from './routes/patient.route.js';
 import pdinteractionRoute from './routes/pdinteraction.route.js';
 import doctorRoute from './routes/doctor.route.js';
+import hospitalRoute from './routes/hospital.route.js'
 import { upload } from './middlewares/multer.middleware.js';
 import bodyParser from 'body-parser';
 
@@ -33,6 +34,7 @@ app.use('/auth', authRoute);
 app.use('/backend/patients', patientRoute);
 app.use('/backend/pdinteraction', pdinteractionRoute);
 app.use('/backend/doctors', doctorRoute);
+app.use('/backend/hospitals', hospitalRoute);
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {
