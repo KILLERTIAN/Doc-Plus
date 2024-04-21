@@ -17,13 +17,12 @@ router.get('/', getAllHospitals);
 router.get('/:id', getHospitalById);
 
 // Create a new hospital
-router.post(
-  '/',
+router.route("/").post(
   upload.fields([
-    {
-      name: 'avatar',
-      maxCount: 1,
-    },
+      {
+          name: "avatar",
+          maxCount: 1
+      }
   ]),
   createHospital
 );
