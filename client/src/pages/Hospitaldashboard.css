@@ -1,0 +1,76 @@
+.hospitalDashboardContainer {
+    display: flex;
+    position: relative;
+    width: 100%;
+    /* height: 90vh; */
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.dashboardContent {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 20px;
+    /* height: auto; */
+    border: 1.5px solid #ddd;
+    border-radius: 10px;
+    flex-direction: column;
+}
+.userDetails ul li{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    /* justify-self: flex-start; */
+    flex-direction: row;
+}
+.userDetails ul li span {
+    margin: 10px;
+}
+.userDetails ul li ion-icon{
+    margin: 5px;
+}
+.userDetails ul li span ion-icon {
+    color: #fddb1c;
+    /* margin: 10px; */
+}
+
+.hospitalBar {
+    display: flex;
+    align-items: flex-start;
+    /* justify-content: center; */
+    flex-direction: column;
+}
+.hospitalBar h3,p{
+    margin: 5px;
+}
+.newAppointmentButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    margin:15px 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    min-height: 60px;
+    transition: background-color 0.3s ease;
+}
+
+.newAppointmentButton:hover {
+    background-color: #0056b3;
+}
+
+.newAppointmentButton ion-icon {
+    margin-left: 5px;
+    font-size: 1.8em;
+}
+.meetTime{
+    margin: 10px;
+}

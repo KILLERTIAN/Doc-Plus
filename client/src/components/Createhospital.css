@@ -1,0 +1,10 @@
+.create-hospital-container{
+    max-width: 600px;
+    margin: 0 auto;
+}
+.create-hospital-container h2{
+    margin: 20px;
+    text-align: center;
+    font-size: 1.8em;
+    color: rgb(9, 209, 53);
+}

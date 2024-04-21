@@ -11,6 +11,8 @@ import Login from './pages/Login';
 import Createdoctor from './components/Createdoctor';
 import DoctorDashboard from './pages/Doctordashboard';
 import Documents from './pages/Documents';
+import Createhospital from './components/Createhospital';
+import Hospitaldashboard from './pages/Hospitaldashboard';
 function App() {
   return (
     <Router>
@@ -19,10 +21,11 @@ function App() {
           <Route path='/' exact element={<Home/>}/>
           <Route path='/dashboard' element={<Dashboard/>}/>
           <Route path='/doctor-dashboard' element={<DoctorDashboard/>}/>
-          
+          <Route path='/hospital-dashboard' element={<Hospitaldashboard/>}/>
           <Route path='/about' element={<About/>}/>
           <Route path="/create-patient" element={<Createpatient/>} />
           <Route path="/create-doctor" element={<Createdoctor/>} />
+          <Route path="/create-hospital" element={<Createhospital/>} />
           <Route path="/documents" element={<Documents/>} />
           <Route path='/sign-up' element={<Signup/>}/>
           <Route path='/login' element={<Login/>}/>

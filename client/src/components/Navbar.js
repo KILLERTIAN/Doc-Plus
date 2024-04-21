@@ -48,7 +48,11 @@ function Navbar() {
             endpointUrl = `http://localhost:8000/backend/doctors?firebaseUid=${firebaseUid}`;
           } else if (currentUser.displayName === 'citizen') {
             endpointUrl = `http://localhost:8000/backend/patients?firebaseUid=${firebaseUid}`;
-          } else {
+          }
+          else if (currentUser.displayName === 'hospital') {
+            endpointUrl = `http://localhost:8000/backend/hospitals?firebaseUid=${firebaseUid}`;
+          }
+             else {
             console.error('Invalid user role:', currentUser.displayName);
             return;
           }
@@ -119,7 +123,8 @@ function Navbar() {
           {currentUser &&  (
             <li className='nav-item'>
               <div className="profile-container" onClick={handleClick}>
-                <img src={userAvatar} alt="Profile" className="profile-pic" />
+                {/* <img src={userAvatar} alt="Profile" className="profile-pic" /> */}
+                <img src="https://res.cloudinary.com/djoebsejh/image/upload/v1713684678/sruz6hlpfaukvpppie2o.png" alt="Profile" className="profile-pic" />
                 <div className="profile-dropdown" style={{ display: click ? 'block' : 'none' }}>
                   <button className="logout-button" onClick={handleLogout}>Logout</button>
                 </div>
