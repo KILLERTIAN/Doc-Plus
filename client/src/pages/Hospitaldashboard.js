@@ -52,10 +52,10 @@ function Hospitaldashboard() {
               <button className="newAppointmentButton" onClick={handleNewAppointment}>
                 Add Appointment<ion-icon name="add-circle"></ion-icon>
               </button>
-              <button className="newAppointmentButton" >
+              <button className="newAppointmentButton up" >
                 Upcoming Appointment<IonIcon icon={arrowForwardOutline} />
               </button>
-              <button className="newAppointmentButton" >
+              <button className="newAppointmentButton past" >
                 Past Appointment<IonIcon icon={arrowForwardOutline} />
               </button>
             </section>

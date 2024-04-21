@@ -124,7 +124,7 @@ function Navbar() {
             <li className='nav-item'>
               <div className="profile-container" onClick={handleClick}>
                 {/* <img src={userAvatar} alt="Profile" className="profile-pic" /> */}
-                <img src="https://res.cloudinary.com/djoebsejh/image/upload/v1713684678/sruz6hlpfaukvpppie2o.png" alt="Profile" className="profile-pic" />
+                <img src="https://res.cloudinary.com/djoebsejh/image/upload/v1711976358/qnmcxqotjgzbup7ajwci.png" alt="Profile" className="profile-pic" />
                 <div className="profile-dropdown" style={{ display: click ? 'block' : 'none' }}>
                   <button className="logout-button" onClick={handleLogout}>Logout</button>
                 </div>

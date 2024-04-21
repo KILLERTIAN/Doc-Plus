@@ -57,15 +57,27 @@
     color: #fff;
     background-color: #007bff;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     min-height: 60px;
     transition: background-color 0.3s ease;
 }
-
 .newAppointmentButton:hover {
     background-color: #0056b3;
 }
+ .up{
+    background-color: #24c703;
+}
+.up:hover{
+    background-color: #1c9e02;
+}
+ .past{
+    background-color: #ff3300;
+}
+.past:hover{
+    background-color: #d42b01;
+}
+
 
 .newAppointmentButton ion-icon {
     margin-left: 5px;

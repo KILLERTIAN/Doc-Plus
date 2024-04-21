@@ -70,12 +70,12 @@
     color: #fff;
 }
 
-/* .hero-text span1 {
-    background: linear-gradient(to right, #ff5555, #ff498f);
+.hero-text span1 {
+    background: linear-gradient(to right, #bfffa2, #eeff8c);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
-    font-size: 1.34em;
-} */
+    font-size: 0.6em;
+}
 
 .hero-free-trial-button {
     margin: 0;
