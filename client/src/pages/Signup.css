@@ -6,7 +6,7 @@
 }
 
 .body {
-    background-image: url('https://res.cloudinary.com/djoebsejh/image/upload/v1713763409/gdl4pudaw2sx8s97yumk.jpg');
+    /* background-image: url('https://res.cloudinary.com/djoebsejh/image/upload/v1713763409/gdl4pudaw2sx8s97yumk.jpg'); */
     /* background-image: url('https://cdn.pixabay.com/photo/2017/03/29/11/29/nepal-2184940_1280.jpg'); */
     background-position: center;
     background-size: cover;
@@ -18,18 +18,39 @@
     align-items: center;
     justify-content: center;
     padding:  20px;
+    background: #070027;
 
 }
 
 .MainContainer {
     display: flex;
-    position: relative;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
-    /* height: 75vh; */
-    /* flex-direction: row; */
-
+    justify-content: center;
+    max-width: 800px;
+    padding: 20px;
+    text-align: center;
 }
+
+/* Animated Blob Container */
+.blob-section {
+    position: absolute;
+    width: 100%;
+    max-width: 500px; /* Adjust as needed */
+    height: 300px; /* Adjust the height of the blob container */
+    margin-bottom: 30px;
+}
+
+.animated-blob {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%; /* Adjust the width of the SVG */
+    height: auto; 
+    transition: transform 330ms ease-in-out;
+}
+
 
 .introTextContainer {
     display: flex;
