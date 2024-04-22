@@ -30,7 +30,7 @@ const HeroSection = () => {
   return (
     <div className='hero-container'>
       <div className="hero-gradient"></div>
-      <img src="images/bg.jpg" alt="background" />
+      <img className="hero-image" src="/images/Hackathonbgfinal.png" alt="background" />
 
       <div className="hero-text">
         <h1>
