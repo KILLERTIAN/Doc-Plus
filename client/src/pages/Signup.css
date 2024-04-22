@@ -6,7 +6,8 @@
 }
 
 .body {
-    background-image: url('https://cdn.pixabay.com/photo/2017/03/29/11/29/nepal-2184940_1280.jpg');
+    background-image: url('https://res.cloudinary.com/djoebsejh/image/upload/v1713763409/gdl4pudaw2sx8s97yumk.jpg');
+    /* background-image: url('https://cdn.pixabay.com/photo/2017/03/29/11/29/nepal-2184940_1280.jpg'); */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -37,7 +38,7 @@
     flex-direction: column;
     /* height: 75vh; */
     width: 400px;
-    /* background: rgba(255, 255, 255, 0.15); */
+    background: rgb(30 49 90 / 18%);
     border-radius: 10px;
     backdrop-filter: blur(15px);
     color: #ffffff;
@@ -80,7 +81,7 @@
   background-color: transparent; /* Updated */
   border-radius: 10px;
   cursor: pointer;
-  font-size: 0.30em;
+  font-size: 0.20em;
   padding: 5px 20px;
   margin: 5px;
     display: flex;
@@ -95,13 +96,13 @@
 }
 
 .glowing-border.active {
-  border-color: #85b9fd; /* Updated */
-  background-color: rgba(255, 255, 255, 0.15); /* Added */
+  border-color: #d9e9ff; /* Updated */
+  background-color: rgba(146, 179, 255, 0.15); /* Added */
 }
 
 
 .Loginlink {
-    color: rgb(133, 233, 255);
+    color: rgb(245, 255, 133);
     margin: 0 3px;
 }
 
