@@ -45,13 +45,30 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%; /* Adjust the width of the SVG */
+    transform: translate(-80%, -70%);
+    width: 100%; 
     height: auto; 
-    transition: transform 330ms ease-in-out;
+    
 }
-
-
+.animated-blob1 {
+    position: absolute;
+   
+    transform: scale(2.9); 
+    transform: translate(100%, 70%);
+  }
+  
+  .animated-blob2 {
+    position: absolute;
+   
+    transform: rotate(45deg); /* Rotate the blob */
+    transform: translate(-80%, 70%);
+  }
+  .animated-blob3 {
+    position: absolute;
+   
+    transform: scale(1.5);
+    transform: translate(170%, -30%);
+  }
 .introTextContainer {
     display: flex;
     align-items: center;
