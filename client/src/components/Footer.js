@@ -27,11 +27,11 @@ function Footer() {
           </div>
           <div class='footer-link-items'>
             <h2>Social Media</h2>
-            <Link to='/'>Instagram</Link>
-            <Link to='/'>Facebook</Link>
-            <Link to='/'>Youtube</Link>
-            <Link to='/'>Twitter</Link>
-            <Link to='/'>LinkedIn</Link>
+            <Link to='https://www.instagram.com/?hl=en'>Instagram</Link>
+            <Link to='https://www.facebook.com/'>Facebook</Link>
+            <Link to='https://www.youtube.com/'>Youtube</Link>
+            <Link to='https://twitter.com/x.'>X</Link>
+            <Link to='https://in.linkedin.com/'>LinkedIn</Link>
           </div>
         </div>
 
@@ -47,11 +47,11 @@ function Footer() {
           </div>
           <small class='website-rights'>DocPlus © 2024 &nbsp;&nbsp; All rights reserved</small>
           { <div class='social-icons'>
-          <IonIcon icon={logoFacebook} className='social-icon-link' />
-            <IonIcon icon={logoInstagram} className='social-icon-link' />
-            <IonIcon icon={logoYoutube} className='social-icon-link' />
-            <IonIcon icon={logoTwitter} className='social-icon-link' />
-            <IonIcon icon={logoLinkedin} className='social-icon-link' />
+            <Link to="https://www.facebook.com/"><IonIcon icon={logoFacebook} className='social-icon-link' /></Link>
+            <Link to="https://www.instagram.com/?hl=en"><IonIcon icon={logoInstagram} className='social-icon-link' /></Link>
+            <Link to="https://www.youtube.com/"><IonIcon icon={logoYoutube} className='social-icon-link' /></Link>
+            <Link to="https://twitter.com/x"><IonIcon icon={logoTwitter} className='social-icon-link' /></Link>
+            <Link to="https://in.linkedin.com/"><IonIcon icon={logoLinkedin} className='social-icon-link' /></Link>
           </div> }
         </div>
       </section>
