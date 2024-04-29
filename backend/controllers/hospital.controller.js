@@ -7,10 +7,15 @@ import { uploadOnCloudinary } from '../utils/cloudinary.js'; // Import Cloudinar
 const createHospital = asyncHandler(async (req, res) => {
   const {
     firebaseUid,
+    h_id,
     name,
     avatar,
-    location,
-    contact,
+    address,
+    city,
+    state,
+    country,
+    phone,
+    email,
     doctors,
     rating,
     rooms,
@@ -22,10 +27,15 @@ const createHospital = asyncHandler(async (req, res) => {
   if (
     [
       firebaseUid,
+      h_id,
       name,
       avatar,
-      location,
-      contact,
+      address,
+      city,
+      state,
+      country,
+      phone,
+      email,
       doctors,
       rating,
       rooms,
@@ -36,21 +46,26 @@ const createHospital = asyncHandler(async (req, res) => {
     throw new createError(400, 'All fields are required');
   }
 
-    // Check if avatar file exists
-    const avatarLocalPath = req.files?.avatar[0]?.path;
-    if (!avatarLocalPath) {
-      throw new createError(400, "Avatar file is required");
-    }
+  // Check if avatar file exists
+  const avatarLocalPath = req.files?.avatar[0]?.path;
+  if (!avatarLocalPath) {
+    throw new createError(400, "Avatar file is required");
+  }
   
-    // Upload avatar to cloudinary
-    const avatarCloudinary = await uploadOnCloudinary(avatarLocalPath);
-    if (!avatarCloudinary) {
-      throw new createError(500, "Error uploading avatar");
-    }
+  // Upload avatar to Cloudinary
+  const avatarCloudinary = await uploadOnCloudinary(avatarLocalPath);
+  if (!avatarCloudinary) {
+    throw new createError(500, "Error uploading avatar");
+  }
+
+  // Create location and contact objects
+  const location = { address, city, state, country };
+  const contact = { phone, email };
 
   // Create hospital in the database with the Cloudinary URL
   const newHospital = await Hospital.create({
     firebaseUid,
+    h_id,
     name,
     avatar: avatarCloudinary.url, // Store Cloudinary URL in the avatar field
     location,
@@ -63,7 +78,7 @@ const createHospital = asyncHandler(async (req, res) => {
   });
 
   // Respond with the newly created hospital
-  return res.status(201).json(new ApiResponse(201, newHospital, "Hospital registered successfully"));
+  return res.status(201).json(newHospital);
 });
 
 // Controller function to get all hospitals
