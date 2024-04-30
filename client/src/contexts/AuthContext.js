@@ -12,12 +12,13 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [isEmailUser, setIsEmailUser] = useState(false);
+  const [userRole, setUserRole] = useState(null); // State for user role
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        initializeUser(user);
+        await initializeUser(user); // Await to make sure user role is fetched
       } else {
         setCurrentUser(null);
         setUserLoggedIn(false);
@@ -34,6 +35,12 @@ export function AuthProvider({ children }) {
     );
     setIsEmailUser(isEmail);
     setUserLoggedIn(true);
+    try {
+      const userRole = await fetchUserRoleFromFirestore(user.uid);
+      setUserRole(userRole);
+    } catch (error) {
+      console.error('Failed to fetch user role:', error);
+    }
     setLoading(false);
   }
 
@@ -42,6 +49,7 @@ export function AuthProvider({ children }) {
       await signOut(auth);
       setCurrentUser(null);
       setUserLoggedIn(false);
+      // setUserRole(null); // Reset user role on logout
     } catch (error) {
       console.error('Logout failed:', error);
     }
@@ -70,6 +78,7 @@ export function AuthProvider({ children }) {
     userLoggedIn,
     isEmailUser,
     currentUser,
+    userRole,
     logout,
     loginWithGoogle,
     loginWithPhone
@@ -80,4 +89,10 @@ export function AuthProvider({ children }) {
       {!loading && children}
     </AuthContext.Provider>
   );
+}
+
+// Function to fetch user role from Firestore
+async function fetchUserRoleFromFirestore(uid) {
+  // Implement your logic to fetch user role from Firestore here
+  // Return user role
 }

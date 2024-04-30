@@ -140,7 +140,7 @@
 
 
 .Loginlink {
-    color: rgb(245, 255, 133);
+    color: rgb(133, 241, 255);
     margin: 0 3px;
 }
 
@@ -217,7 +217,7 @@
     color: rgb(240, 240, 240);
     letter-spacing: 1px;
     font-size: 0.16em;
-    background: linear-gradient(to right, rgb(0, 13, 50), rgb(0, 69, 152));
+    background: linear-gradient(to right, rgb(7, 55, 189), rgb(42, 128, 235));
     cursor: pointer;
 }
 

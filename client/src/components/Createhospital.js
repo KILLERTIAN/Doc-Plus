@@ -4,10 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import './Createhospital.css';
 import { useAuth } from '../contexts/AuthContext';
 
-function Createhospital() {
+function CreateHospital() {
   const navigate = useNavigate();
   const { currentUser } = useAuth();
   const [previewUrl, setPreviewUrl] = useState('');
+  const [h_id, setH_id] = useState('');
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
@@ -17,6 +18,8 @@ function Createhospital() {
   const [email, setEmail] = useState('');
   const [avatar, setAvatar] = useState(null);
   const firebaseUid = currentUser ? currentUser.uid : '';
+  const [loading, setLoading] = useState(false); // State to manage loading state
+  const [error, setError] = useState(null); // State to manage error message
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -36,13 +39,16 @@ function Createhospital() {
     e.preventDefault();
 
     // Check if all required fields are filled out
-    if (!name || !address || !city || !state || !country || !phone || !email) {
+    if (!h_id || !name || !address || !city || !state || !country || !phone || !email) {
       alert('Please fill out all required fields.');
       return;
     }
 
+    // Set loading state to true
+    setLoading(true);
     try {
       const formData = new FormData();
+      formData.append('h_id', h_id);
       formData.append('name', name);
       formData.append('address', address);
       formData.append('city', city);
@@ -52,14 +58,20 @@ function Createhospital() {
       formData.append('email', email);
       formData.append('avatar', avatar);
       formData.append('firebaseUid', firebaseUid);
+      const locationObj = { address, city, state, country };
+      formData.append('location', JSON.stringify(locationObj));
 
-      await axios.post('http://localhost:8000/backend/hospitals', formData, {
+      const contactObj = { phone, email };
+      formData.append('contact', JSON.stringify(contactObj));
+
+      const response = await axios.post('http://localhost:8000/backend/hospitals', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       });
 
       // Reset form fields
+      setH_id('');
       setName('');
       setAddress('');
       setCity('');
@@ -68,13 +80,19 @@ function Createhospital() {
       setPhone('');
       setEmail('');
       setAvatar(null);
+      setPreviewUrl('');
 
+      // Set loading state to false
+      setLoading(false);
+
+      // Redirect to hospital dashboard
       navigate('/hospital-dashboard');
-      // Refresh the page to reflect changes (optional)
-      window.location.reload();
     } catch (error) {
       console.error('Error creating hospital:', error);
-      alert('An error occurred. Please try again.');
+      // Set error state to display error message
+      setError('An error occurred. Please try again.');
+      // Set loading state to false
+      setLoading(false);
     }
   };
 
@@ -96,6 +114,10 @@ function Createhospital() {
             <input type="file" id="avatar" name="avatar" accept="image/*" onChange={handleFileChange} />
           </label>
 
+          <label>
+            Hospital ID:
+            <input type="text" value={h_id} onChange={(e) => setH_id(e.target.value)} placeholder="Enter Hospital ID" required />
+          </label>
           <label>
             Hospital Name:
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter Hospital Name" required />
@@ -125,11 +147,19 @@ function Createhospital() {
             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter Email" required />
           </label>
 
-          <button type="submit">Submit</button>
+          {/* Display error message if there's an error */}
+          {error && <div className="error">{error}</div>}
+
+          {/* Display loading spinner while submitting */}
+          {loading ? (
+            <div className="loading">Submitting...</div>
+          ) : (
+            <button type="submit">Submit</button>
+          )}
         </form>
       </div>
     </div>
   );
 }
 
-export default Createhospital;
+export default CreateHospital;

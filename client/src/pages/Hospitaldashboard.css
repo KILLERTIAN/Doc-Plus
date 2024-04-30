@@ -25,9 +25,9 @@
     /* justify-self: flex-start; */
     flex-direction: row;
 }
-.userDetails ul li span {
+/* .userDetails ul li span {
     margin: 10px;
-}
+} */
 .userDetails ul li ion-icon{
     margin: 5px;
 }

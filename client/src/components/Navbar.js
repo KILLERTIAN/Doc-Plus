@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {Button} from './Button'
+import { Button } from './Button'
 import './Navbar.css';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -43,7 +43,7 @@ function Navbar() {
       try {
         if (currentUser) {
           let endpointUrl = '';
-  
+
           if (currentUser.displayName === 'doctor') {
             endpointUrl = `http://localhost:8000/backend/doctors?firebaseUid=${firebaseUid}`;
           } else if (currentUser.displayName === 'citizen') {
@@ -52,14 +52,14 @@ function Navbar() {
           else if (currentUser.displayName === 'hospital') {
             endpointUrl = `http://localhost:8000/backend/hospitals?firebaseUid=${firebaseUid}`;
           }
-             else {
+          else {
             console.error('Invalid user role:', currentUser.displayName);
             return;
           }
-  
+
           const response = await axios.get(endpointUrl);
           const responseData = response.data[0];
-  
+
           if (responseData && responseData.avatar) {
             setUserAvatar(responseData.avatar);
           } else {
@@ -84,7 +84,7 @@ function Navbar() {
           Doc Plus
         </Link>
         <div className='menu-icon' onClick={handleClick}>
-        {click ? (
+          {click ? (
             <ion-icon className='fa-bars' name="close-outline"></ion-icon>
           ) : (
             <ion-icon className='fa-bars' name="menu-outline"></ion-icon>
@@ -99,7 +99,13 @@ function Navbar() {
           {currentUser && currentUser.displayName === 'doctor' ? (
             <li className='nav-item'>
               <Link to='/doctor-dashboard' className='nav-links' onClick={closeMobileMenu}>
-                Dashboard
+                Doctor Dashboard
+              </Link>
+            </li>
+          ) : currentUser && currentUser.displayName === 'hospital' ? (
+            <li className='nav-item'>
+              <Link to='/hospital-dashboard' className='nav-links' onClick={closeMobileMenu}>
+                Hospital Dashboard
               </Link>
             </li>
           ) : (
@@ -109,6 +115,7 @@ function Navbar() {
               </Link>
             </li>
           )}
+
           <li className='nav-item'>
             <Link to='/documents' className='nav-links' onClick={closeMobileMenu}>
               Documents
@@ -120,10 +127,10 @@ function Navbar() {
             </Link>
           </li>
 
-          {currentUser &&  (
+          {currentUser && (
             <li className='nav-item'>
               <div className="profile-container" onClick={handleClick}>
-                <img src={userAvatar} alt="Profile" className="profile-pic" /> 
+                <img src={userAvatar} alt="Profile" className="profile-pic" />
                 {/* <img src="https://res.cloudinary.com/djoebsejh/image/upload/v1711976358/qnmcxqotjgzbup7ajwci.png" alt="Profile" className="profile-pic" />*/}
                 <div className="profile-dropdown" style={{ display: click ? 'block' : 'none' }}>
                   <button className="logout-button" onClick={handleLogout}>Logout</button>
@@ -132,9 +139,9 @@ function Navbar() {
             </li>
           )}
           <div onClick={closeMobileMenu}>
-          {!currentUser && button && <Button  buttonStyle='btn--outline'>SIGN UP</Button>}
+            {!currentUser && button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
           </div>
-          
+
         </ul>
       </div>
     </nav>

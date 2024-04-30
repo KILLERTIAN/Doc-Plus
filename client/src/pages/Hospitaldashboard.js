@@ -1,15 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Hospitaldashboard.css';
 import Filter from '../components/Filter';
 import { IonIcon } from '@ionic/react';
-import { locationOutline, callOutline, star,arrowForwardOutline } from 'ionicons/icons';
+import axios from 'axios';
+import { useAuth } from '../contexts/AuthContext.js';
+import Loader from '../components/Loader';
+import { locationOutline, callOutline, arrowForwardOutline } from 'ionicons/icons';
 
 function Hospitaldashboard() {
-  const handleNewAppointment = () => {
-    // Handle logic for creating a new appointment
-    console.log('New appointment button clicked!');
-    // Add your logic here to navigate to the appointment creation page or perform other actions
+  const { currentUser } = useAuth();
+  const [loading, setLoading] = useState(true);
+  const [hospital, setHospital] = useState(null);
+
+  useEffect(() => {
+    if (currentUser) {
+      fetchData(currentUser.uid);
+    }
+  }, [currentUser]);
+
+  const fetchData = async (firebaseUid) => {
+    try {
+      const hospitalResponse = await axios.get(`http://localhost:8000/backend/hospitals?firebaseUid=${firebaseUid}`);
+      const currentHospital = hospitalResponse.data[0];
+      setHospital(currentHospital);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   };
+
+  if (loading) {
+    return <Loader />; // Display loader while fetching data
+  }
 
   return (
     <div className="hospitalDashboardContainer">
@@ -17,20 +39,19 @@ function Hospitaldashboard() {
         <div className="userInfoContainer">
           <div className="profileImageName">
             <div className="profileImageSection">
-              <img src="https://res.cloudinary.com/djoebsejh/image/upload/v1713684678/sruz6hlpfaukvpppie2o.png" alt="Profile" />
+              <img src={hospital.avatar} alt="Profile" />
             </div>
             <div className="userNameId">
-              <span>Recover +</span> <br />
-              5679382098
+              <span>{hospital.name}</span> <br />
+              {hospital.h_id}
             </div>
           </div>
           <div className="userDetails">
             <ul>
-              <li>Location<IonIcon icon={locationOutline} />: 234 Street, Block-3, Dwarka, Delhi, India</li>
-              <li>Contact<IonIcon icon={callOutline} />: +1234567890</li>
+              <li>Location<IonIcon icon={locationOutline} />: {hospital.location.address}, {hospital.location.city}, {hospital.location.state}, {hospital.location.country}</li>
+              <li>Contact<IonIcon icon={callOutline} />: {hospital.contact.phone}</li>
             </ul>
             <ul>
-
               <li>Rating:
                 <span>
                   {[1, 2, 3, 4, 5].map((star) => (
@@ -38,7 +59,7 @@ function Hospitaldashboard() {
                   ))}
                 </span>
               </li>
-              <li>Doctors: 200+</li>
+              <li>Email: {hospital.contact.email}</li>
             </ul>
           </div>
         </div>
@@ -49,7 +70,7 @@ function Hospitaldashboard() {
               <p>Service A, Service B, Service C</p>
               <h3>Facilities</h3>
               <p>Facility X, Facility Y</p>
-              <button className="newAppointmentButton" onClick={handleNewAppointment}>
+              <button className="newAppointmentButton" >
                 Add Appointment<ion-icon name="add-circle"></ion-icon>
               </button>
               <button className="newAppointmentButton up" >
@@ -62,7 +83,7 @@ function Hospitaldashboard() {
           </div>
           <div className="userPastRecords">
             <div className="headingandfilter">
-              <h2>Past Appointments</h2>
+              <h2>Upcoming Appointments</h2>
               <Filter />
             </div>
             <div className="accordionContainer">
