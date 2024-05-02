@@ -14,7 +14,7 @@ const router = express.Router();
 router.get('/', getAllHospitals);
 
 // Get a specific hospital by ID
-router.get('/:id', getHospitalById);
+router.get('/:uid', getHospitalById);
 
 // Create a new hospital
 router.route("/").post(
@@ -28,9 +28,9 @@ router.route("/").post(
 );
 
 // Update a hospital by ID
-router.put('/:id', updateHospitalById);
+router.put('/:uid', updateHospitalById);
 
 // Delete a hospital by ID
-router.delete('/:id', deleteHospitalById);
+router.delete('/:uid', deleteHospitalById);
 
 export default router;

@@ -81,21 +81,27 @@ const createHospital = asyncHandler(async (req, res) => {
   return res.status(201).json(newHospital);
 });
 
-// Controller function to get all hospitals
-const getAllHospitals = asyncHandler(async (req, res) => {
-  const hospitals = await Hospital.find();
-  res.status(200).json(hospitals);
-});
-
-// Controller function to get a single hospital by ID
-const getHospitalById = asyncHandler(async (req, res) => {
-  const { id } = req.params;
-  const hospital = await Hospital.findById(id);
-  if (!hospital) {
-    throw new createError(404, 'Hospital not found');
+const getHospitalById = async (req, res, next) => {
+  try {
+    const hospital = await Hospital.findById(req.params.id);
+    if (!hospital) {
+      return res.status(404).json({ message: 'Hospital not found' });
+    }
+    res.status(200).json(hospital);
+  } catch (err) {
+    next(err);
   }
-  res.status(200).json(hospital);
-});
+};
+
+const getAllHospitals = async (req, res, next) => {
+  const { firebaseUid } = req.query;
+  try {
+    const hospitals = await Hospital.find({ firebaseUid });
+    res.status(200).json(hospitals);
+  } catch (err) {
+    next(err);
+  }
+};
 
 // Controller function to update a hospital by ID
 const updateHospitalById = asyncHandler(async (req, res) => {
