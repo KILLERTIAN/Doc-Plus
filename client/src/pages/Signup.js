@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Signup.css';
-import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signInWithPhoneNumber, updateProfile } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect, signInWithPhoneNumber, updateProfile, onAuthStateChanged } from 'firebase/auth';
 import { setDoc, doc, getFirestore } from 'firebase/firestore';
 
 function Signup() {
@@ -12,6 +12,9 @@ function Signup() {
   const [showPhoneNumberInput, setShowPhoneNumberInput] = useState(false);
   const [role, setRole] = useState('citizen');
   const navigate = useNavigate();
+
+
+
 
   const handleSignupWithEmail = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
@@ -33,13 +36,9 @@ function Signup() {
     try {
       const auth = getAuth();
       const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-
-      const db = getFirestore();
-      await setDoc(doc(db, 'users', user.uid), { role });
-
-      navigate(getRedirectPath());
+      // Redirect to Google sign-in page
+      await signInWithRedirect(auth, provider);
+      navigate(getRedirectPath(role));
     } catch (error) {
       const errorMessage = mapFirebaseErrorToCustomMessage(error.code);
       setError(errorMessage);
@@ -74,7 +73,23 @@ function Signup() {
         return 'An error occurred. Please try again later.';
     }
   };
-
+  // useEffect(() => {
+  //   const auth = getAuth();
+  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       // Check user's role from user object
+  //       const role = user.displayName; // Assuming you set the role in the displayName
+  //       if (role === "citizen") {
+  //         navigate('/create-patient');
+  //       } else if (role === "doctor") {
+  //         navigate('/create-doctor');
+  //       } else if (role === "hospital") {
+  //         navigate('/create-hospital');
+  //       }
+  //     }
+  //   });
+  //   return () => unsubscribe();
+  // }, [navigate]);
   const getRedirectPath = () => {
     switch (role) {
       case 'citizen':
@@ -107,10 +122,6 @@ function Signup() {
                   <stop offset="0%" style={{ stopColor: 'rgb(15, 143, 255)' }}></stop>
                   <stop offset="100%" style={{ stopColor: 'rgb(99, 38, 242)' }}></stop>
                 </linearGradient>
-                <linearGradient id="gradient1" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" style={{ stopColor: 'rgb(255, 165, 0)' }}></stop>
-                  <stop offset="100%" style={{ stopColor: 'rgb(255, 69, 0)' }}></stop>
-                </linearGradient>
 
               </defs>
               <path
@@ -138,9 +149,7 @@ function Signup() {
                   M43.8,-51.2C60.1,-38.6,78.8,-27.9,80.2,-14.9C81.6,-1.9,65.6,13.4,52.8,25.8C40.1,38.2,30.4,47.7,19.3,50.9C8.1,54,-4.6,50.9,-22.3,49.6C-40,48.2,-62.6,48.7,-73.8,38.3C-85,27.8,-84.7,6.5,-80.4,-13.5C-76.1,-33.5,-67.7,-52.1,-53.6,-65.1C-39.5,-78.1,-19.8,-85.5,-3,-81.9C13.8,-78.4,27.6,-63.9,43.8,-51.2Z;
                   M49.6,-61C60.8,-49.7,63.9,-30.8,66.4,-12.4C68.9,6,70.6,23.9,62.5,34.2C54.3,44.5,36.3,47.3,19.5,53.2C2.8,59.1,-12.7,68.1,-28.5,67.1C-44.3,66.2,-60.4,55.2,-71,39.7C-81.6,24.1,-86.5,4,-80.2,-11.1C-73.8,-26.1,-56.3,-36.1,-41,-46.7C-25.8,-57.3,-12.9,-68.5,3.1,-72.2C19.2,-76,38.4,-72.3,49.6,-61Z;
                   M40.1,-45.7C52.2,-37.7,62.3,-25.2,66.3,-10.5C70.3,4.2,68.2,21.1,59.8,33.6C51.5,46.1,37,54,22.2,58.3C7.3,62.6,-8,63.3,-22.3,59C-36.6,54.8,-50,45.7,-60.8,32.4C-71.7,19.2,-80.1,1.8,-74.9,-10.8C-69.8,-23.3,-51.2,-31,-36.4,-38.6C-21.7,-46.2,-10.8,-53.6,1.6,-55.5C14,-57.4,28,-53.7,40.1,-45.7Z;
-                  
-
-          "
+"
                 ></animate>
               </path>
             </svg>

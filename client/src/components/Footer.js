@@ -8,7 +8,6 @@ import { logoFacebook, logoInstagram, logoYoutube, logoTwitter, logoLinkedin } f
 function Footer() {
   return (
     <div className='footer-container'>
-      
       <div class='footer-links'>
         <div className='footer-link-wrapper'>
           <div class='footer-link-items'>

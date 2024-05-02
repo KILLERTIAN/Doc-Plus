@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
-import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signInWithPhoneNumber } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, signInWithRedirect, GoogleAuthProvider, signInWithPhoneNumber, onAuthStateChanged } from 'firebase/auth';
 // import { doc, getFirestore } from 'firebase/firestore';
 
 function Login() {
@@ -10,6 +10,17 @@ function Login() {
   const [error, setError] = useState(null);
   // const [role, setRole] = useState('citizen');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigate('/');
+      } 
+    });
+    return () => unsubscribe();
+  }, [navigate]);
+
 
 
   const handleLogin = async () => {
@@ -45,22 +56,7 @@ function Login() {
     try {
       const auth = getAuth();
       const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
-
-      // Store the user's role in Firestore
-      // const db = getFirestore();
-      // const user = result.user;
-      // await db.collection('users').doc(user.uid).set({ role });
-
-      // Redirect based on selected role
-      // if (role === 'citizen') {
-      //   navigate('/dashboard');
-      // } else if (role === 'doctor') {
-      //   navigate('/doctor-dashboard');
-      // } else if (role === 'hospital') {
-      //   navigate('/hospital-dashboard');
-      // }
-      navigate('/');
+      await signInWithRedirect(auth, provider);
     } catch (error) {
       const errorMessage = mapFirebaseErrorToCustomMessage(error.code);
       setError(errorMessage);

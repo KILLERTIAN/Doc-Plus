@@ -165,10 +165,15 @@
   }
   
   @media screen and (max-width: 820px) {
-    .footer-links {
-      padding-top: 2rem;
+    .footer-container{
+      padding: 1rem 0;
     }
-  
+    .footer-links {
+      padding-top: 0;
+    }
+  .footer-link-items{
+    margin: 0;
+  }
     .footer-input {
       width: 100%;
     }

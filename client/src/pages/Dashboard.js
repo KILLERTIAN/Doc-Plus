@@ -37,7 +37,7 @@ function Dashboard() {
 
   useEffect(() => {
     if (currentUser) {
-      fetchData(currentUser.uid); // Pass the Firebase UID to the fetchData function
+      fetchData(currentUser.uid); 
     }
   }, [currentUser]);
 
