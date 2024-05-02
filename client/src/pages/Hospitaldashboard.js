@@ -30,7 +30,7 @@ function Hospitaldashboard() {
   };
 
   if (loading) {
-    return <Loader />; // Display loader while fetching data
+    return <Loader />;
   }
 
   return (
