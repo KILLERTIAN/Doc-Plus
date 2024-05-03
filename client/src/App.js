@@ -13,9 +13,11 @@ import DoctorDashboard from './pages/Doctordashboard';
 import Documents from './pages/Documents';
 import Createhospital from './components/Createhospital';
 import Hospitaldashboard from './pages/Hospitaldashboard';
+import ScrollToTop from './components/ScrollToTop';
 function App() {
   return (
     <Router>
+      <ScrollToTop/>
         <Navbar/>
         <Routes>
           <Route path='/' exact element={<Home/>}/>

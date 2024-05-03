@@ -8,10 +8,11 @@ const HeroSection = () => {
     // Initialize Typed.js once component is mounted
     const options = {
       strings: [
-        'Discover the future of healthcare management.',
-        'Digitalize Your Medical Records Effortlessly',
-        'Book Doctor Appointments and Access Hospital Profiles',
-        'Receive Ongoing Disease and Medicine Reminders'
+        'Online Consultations',
+        'Digitalize Medical Records',
+        'Book Appointments',
+        'Medicince Reminder',
+        'Ongoing treatment record'
 
       ],
       typeSpeed: 40,
@@ -29,21 +30,15 @@ const HeroSection = () => {
 
   return (
     <div className='hero-container'>
-      <div className="hero-gradient"></div>
-      <img className="hero-image" src="/images/snapedit_1713760480178.jpg" alt="background" />
-
       <div className="hero-text">
         <h1>
-          <span>All your health related needs </span> <br/> 
-          {/* <span>Digitalize Your Medical Records Effortlessly</span> <br />
-          <span>Connect with Doctors Anywhere, Anytime</span> <br />
-          <span>Get AI-based Exercise Recommendations and Disease Predictions</span> <br />
-          <span>Receive Ongoing Disease and Medicine Reminders</span> <br />
-          <span>Book Doctor Appointments and Access Hospital Profiles</span> <br />
-          <span>Stay Updated with Recent Disease Feeds</span> <br /> */}
+          <span>What we do?<br /> We do it All!</span><br /> 
           <span1 className="typed-text"></span1>
         </h1>
         <Link to="/sign-up" className='hero-free-trial-button'><button>Get Started</button></Link>
+      </div>
+      <div className="hero-gradient">
+      <img className="hero-image" src="https://res.cloudinary.com/djoebsejh/image/upload/v1714755903/lkqiz2emsfutwutp5asr.png" alt="background" />
       </div>
     </div>
   );

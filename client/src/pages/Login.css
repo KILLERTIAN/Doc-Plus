@@ -1,4 +1,15 @@
-
+.body1{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-size: 100px;
+    display: flex;
+    min-height: 90vh;
+    align-items: center;
+    justify-content: center;
+    background: #070027;
+}
 .sign-in-input{
     display: flex;
     width: 300px;
@@ -36,8 +47,4 @@
     font-size: 0.14em;
     margin: 10px 5px;
     letter-spacing: normal;
-    /* display: flex;
-    width: 100%; */
-    /* align-items: center;
-    justify-content: center; */
 }

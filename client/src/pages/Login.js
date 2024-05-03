@@ -79,7 +79,7 @@ function Login() {
   };
 
   return (
-    <div className='body'>
+    <div className='body1'>
       <div className="MainContainer">
       <div className="blob-section">
           <div className="animated-blob">
