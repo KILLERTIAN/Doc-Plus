@@ -30,7 +30,7 @@
     align-items: center;
     justify-content: center;
     max-width: 800px;
-    padding: 20px;
+    /* padding: 20px; */
     text-align: center;
 }
 
@@ -74,7 +74,7 @@
     position: absolute;
 
     transform: scale(3);
-    transform: translate(140%, -50%);
+    transform: translate(100%, -50%);
 }
 
 .introTextContainer {
@@ -314,8 +314,15 @@
     .MainContainer {
         display: flex;
         flex-direction: column-reverse;
+        
     }
     .loginContainer{
+        margin: 0;
         margin-bottom: 10px;
+        
+    }
+    .animated-blob3,
+    .animated-blob1{
+display: none;
     }
 }
