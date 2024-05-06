@@ -28,12 +28,15 @@
 /* .userDetails ul li span {
     margin: 10px;
 } */
-.userDetails ul li ion-icon{
-    margin: 5px;
+.userDetails ul li span{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* margin: 10px; */
 }
 .userDetails ul li span ion-icon {
     color: #fddb1c;
-    /* margin: 10px; */
+    margin: 5px;
 }
 
 .hospitalBar {
@@ -50,7 +53,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 10px 20px;
+    padding: 10px 15px;
     margin:15px 0;
     font-size: 16px;
     font-weight: bold;
@@ -59,11 +62,16 @@
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    min-height: 60px;
+    /* min-height: 60px; */
     transition: background-color 0.3s ease;
 }
 .newAppointmentButton:hover {
     background-color: #0056b3;
+}
+.newAppointmentButton ion-icon{
+    height: 25px;
+    min-width: 25px;
+    margin-left: 5px;
 }
  .up{
     background-color: #24c703;
@@ -79,10 +87,10 @@
 }
 
 
-.newAppointmentButton ion-icon {
+/* .newAppointmentButton ion-icon {
     margin-left: 5px;
     font-size: 1.8em;
-}
+} */
 .meetTime{
     margin: 10px;
 }

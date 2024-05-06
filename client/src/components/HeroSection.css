@@ -6,7 +6,7 @@
 
 .hero-container {
     position: relative;
-    height: 90vh;
+    height: 100%;
     width: 100%;
     display: flex;
 
@@ -15,23 +15,27 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to left bottom, #7752fd, #aeb6ff);
+    /* background: linear-gradient(to left bottom, #7752fd, #aeb6ff); */
+    background: linear-gradient(to left bottom, #fce2ff, #fdf5ff);
     /* backdrop-filter: blur(15px); */
     /* object-fit: contain; */
     /* box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2); */
     /* background-image: url('/public/images/bg.jpg'); */
 
 }
-.hero-gradient{
+
+.hero-gradient {
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 50%;
 }
+
 .hero-container img {
     position: relative;
-    width: 500px;
-    height: 500px;
+    width: 100%;
+    height: auto;
     z-index: 1;
     padding: 10px 20px;
     transition: 0.45s ease-in-out;
@@ -53,25 +57,8 @@
     text-align: center;
     width: 50%;
     padding: 20px 30px;
-    backdrop-filter: blur(5px);
-    /* background: #0b0f7703; */
-    /* border-radius: 20px; */
-}
-
-
-.hero-text h1 {
-    /* background: linear-gradient(to right, #31f582, #2cd5f3); */
-    font-size: 3.1em;
-    font-weight: 600;
-    margin: 20px 0;
-    margin-top: 0;
-
-}
-
-.hero-text>p {
     margin: 10px 0;
-    letter-spacing: 0.8px;
-    font-size: 1.6em;
+    font-size: 1.8em;
     font-weight: 600;
 }
 
@@ -82,7 +69,7 @@
 }
 
 .hero-text span1 {
-    background: linear-gradient(to right bottom, #ffd519, #FEEFAD, #ffd519);
+    background: linear-gradient(to right bottom, #ffae00, #ffd82c, #ffae00,#ffd82c,#ffae00,#ffd82c,#ffae00);
     /* background: linear-gradient(to right bottom, #2c128a, #010a1b); */
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
@@ -95,6 +82,7 @@
     display: flex;
     position: relative;
     text-decoration: none;
+    font-size: 0.6em;
     margin: 40px 0px;
 
 }
@@ -189,13 +177,17 @@
         /* height: 90vh; */
     }
 
+    .hero-gradient {
+        width: 100%;
+    }
+
     .hero-text {
         position: relative;
         margin: 0;
         padding: 2em;
         /* padding-bottom: 1em; */
         width: 100%;
-        /* overflow-y: hidden; */
+        font-size: 1.5em;
     }
 
     .hero-text>h1 {

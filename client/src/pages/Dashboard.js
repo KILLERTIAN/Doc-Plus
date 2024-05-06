@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '../contexts/AuthContext.js'; // Import the useAuth hook
 import Loader from '../components/Loader'; // Import your Loader component
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css';
 
 function Dashboard() {
   const { currentUser } = useAuth(); // Access the current user object from the auth context
@@ -15,6 +17,8 @@ function Dashboard() {
   const [interactions, setInteractions] = useState([]);
   const [ongoingTreatments, setOngoingTreatments] = useState([]);
   const [filters, setFilters] = useState({});
+  const [lightboxIndex, setLightboxIndex] = useState(0); // State to manage lightbox index
+  const [lightboxOpen, setLightboxOpen] = useState(false); // State to manage lightbox open/close
 
   // Function to calculate time remaining for a treatment
   const calculateTimeRemaining = (treatment) => {
@@ -37,7 +41,7 @@ function Dashboard() {
 
   useEffect(() => {
     if (currentUser) {
-      fetchData(currentUser.uid); 
+      fetchData(currentUser.uid);
     }
   }, [currentUser]);
 
@@ -102,7 +106,7 @@ function Dashboard() {
       }
 
       localStorage.setItem('isReloaded', true);
-      window.location.reload(); 
+      window.location.reload();
     }
   }, [patient]);
 
@@ -117,6 +121,17 @@ function Dashboard() {
         interaction._id === id ? { ...interaction, open: !interaction.open } : interaction
       )
     );
+  };
+
+  // Function to open the lightbox with the selected document
+  const openLightbox = (index, documentUrls) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
+  // Function to close the lightbox
+  const closeLightbox = () => {
+    setLightboxOpen(false);
   };
 
   return (
@@ -198,7 +213,19 @@ function Dashboard() {
                         <div className="accordianDetails">
                           <p>Symptoms: {interaction.symptoms.join(', ')}</p>
                           <p>Medicines Provided: {interaction.medicines_provided.join(', ')}</p>
-                          <p>Documents: {interaction.documents.join(', ')}</p>
+                          {/* Render document previews */}
+                          <div className="document-previews">
+                            {interaction.documents.map((document, index) => (
+                              <img
+                                key={index}
+                                src={document.document_url}
+                                alt={`Document ${index + 1}`}
+                                onClick={() => openLightbox(index, interaction.documents)}
+                                className="document-preview"
+                              />
+                            ))}
+                          </div>
+
                         </div>
                       )}
                     </div>
@@ -209,6 +236,20 @@ function Dashboard() {
           </>
         )}
       </div>
+      {lightboxOpen && (
+        <Lightbox
+          mainSrc={interactions[lightboxIndex]?.documents[0]?.document_url}
+          onCloseRequest={closeLightbox}
+          nextSrc={interactions[(lightboxIndex + 1) % interactions.length]?.documents[0]?.document_url}
+          prevSrc={interactions[(lightboxIndex + interactions.length - 1) % interactions.length]?.documents[0]?.document_url}
+          onMovePrevRequest={() => setLightboxIndex((lightboxIndex + interactions.length - 1) % interactions.length)}
+          onMoveNextRequest={() => setLightboxIndex((lightboxIndex + 1) % interactions.length)}
+          enableZoom={true}
+        />
+      )}
+
+
+
     </div>
   );
 }

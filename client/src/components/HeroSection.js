@@ -31,7 +31,7 @@ const HeroSection = () => {
   return (
     <div className='hero-container'>
       <div className="hero-text">
-        <h1>
+        <h1 >
           <span>What we do?<br /> We do it All!</span><br /> 
           <span1 className="typed-text"></span1>
         </h1>

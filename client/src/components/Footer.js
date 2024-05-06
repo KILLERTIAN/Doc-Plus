@@ -40,11 +40,11 @@ function Footer() {
           <div class='footer-logo'>
             <Link to='/' className='social-logo'>
             <img src="/images/docpluslogo.png" alt="logo"  />
-              DocPlus
+              Doc Plus
               
             </Link>
           </div>
-          <small class='website-rights'>DocPlus © 2024 &nbsp;&nbsp; All rights reserved</small>
+          <small class='website-rights'>Doc Plus © 2024 &nbsp;&nbsp; All rights reserved</small>
           { <div class='social-icons'>
             <Link to="https://www.facebook.com/"><IonIcon icon={logoFacebook} className='social-icon-link' /></Link>
             <Link to="https://www.instagram.com/?hl=en"><IonIcon icon={logoInstagram} className='social-icon-link' /></Link>

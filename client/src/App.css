@@ -1,5 +1,18 @@
+/* @import "~react-image-gallery/styles/css/image-gallery.css"; */
 * {
     margin: 0;
     padding: 0;
     font-family: 'Outfit', sans-serif;
+}
+h2{
+    font-size: 1.5em;
+}
+
+h1 {
+    /* background: linear-gradient(to right, #31f582, #2cd5f3); */
+    font-size: 2em;
+    font-weight: 600;
+    margin: 20px 0;
+    margin-top: 0;
+
 }
