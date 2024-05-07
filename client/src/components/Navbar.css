@@ -77,7 +77,14 @@
     border-bottom: 4px solid #ffe923;
     transition: all 0.2s ease-out;
   }
-  
+  .nav-item.selected {
+    border-bottom: 4px solid #ffe923;
+    transition: all 0.2s ease-out; 
+  }
+  .nav-item.selected:hover{
+    border-bottom: none; 
+    transition: all 0.2s ease-out;
+  }
   .fa-bars {
     color: #fff;
   }

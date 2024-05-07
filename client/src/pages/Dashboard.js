@@ -4,8 +4,8 @@ import Filter from '../components/Filter.js';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
-import { useAuth } from '../contexts/AuthContext.js'; // Import the useAuth hook
-import Loader from '../components/Loader'; // Import your Loader component
+import { useAuth } from '../contexts/AuthContext.js';
+import Loader from '../components/Loader';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 
@@ -17,8 +17,8 @@ function Dashboard() {
   const [interactions, setInteractions] = useState([]);
   const [ongoingTreatments, setOngoingTreatments] = useState([]);
   const [filters, setFilters] = useState({});
-  const [lightboxIndex, setLightboxIndex] = useState(0); // State to manage lightbox index
-  const [lightboxOpen, setLightboxOpen] = useState(false); // State to manage lightbox open/close
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   // Function to calculate time remaining for a treatment
   const calculateTimeRemaining = (treatment) => {
@@ -76,7 +76,7 @@ function Dashboard() {
       });
       setOngoingTreatments(ongoing);
 
-      setLoading(false); // Data fetching is complete, set loading to false
+      setLoading(false);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -84,12 +84,12 @@ function Dashboard() {
 
   useEffect(() => {
     if (patient && !localStorage.getItem('isReloaded')) {
-      // Retrieve interactions data from local storage
+
       const storedInteractions = JSON.parse(localStorage.getItem('interactions'));
       if (storedInteractions) {
         setInteractions(storedInteractions);
 
-        // Calculate ongoing treatments
+
         const now = new Date();
         const ongoing = storedInteractions.filter(interaction => {
           const meetingDate = new Date(interaction.meeting_date);
@@ -123,13 +123,13 @@ function Dashboard() {
     );
   };
 
-  // Function to open the lightbox with the selected document
+
   const openLightbox = (index, documentUrls) => {
     setLightboxIndex(index);
     setLightboxOpen(true);
   };
 
-  // Function to close the lightbox
+
   const closeLightbox = () => {
     setLightboxOpen(false);
   };
