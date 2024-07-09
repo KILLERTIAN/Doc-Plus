@@ -1,82 +1,156 @@
+/* Medical Feeds Container */
 .medical-feeds-container {
-    padding: 20px;
+  padding: 20px;
+  /* background-color: #f5f7fa; */
+
+}
+
+.medical-feeds-container h2 {
+  color: #398fff;
+  text-align: center;
+  margin: 10px 10px 20px;
+  font-size: 2em;
+  /* font-weight: bold; */
+}
+
+/* Wrapper for the feeds */
+.feeds-wrapper {
+  display: flex;
+}
+
+/* Active Feed Container */
+.active-feed-container {
+  width: 70%;
+  margin-right: 20px;
+}
+
+/* Normal Feed List */
+.feeds-list {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Feed Item Styles */
+.feed-item {
+  border: 2px solid #e0f4ff;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.feed-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.feed-item.hidden {
+  display: none;
+}
+
+/* Feed Preview Styles */
+.feed-preview {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  transition: all 0.3s ease;
+}
+
+.feed-image {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-right: 15px;
+  transition: transform 0.3s ease;
+}
+
+.feed-item:hover .feed-image {
+  transform: scale(1.05);
+}
+
+.feed-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.feed-content {
+  flex: 1;
+}
+
+.feed-title {
+  font-size: 18px;
+  color: #333333;
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+.feed-item:hover .feed-title {
+  color: #398fff;
+}
+
+.feed-description {
+  font-size: 14px;
+  color: #666666;
+}
+
+/* Expanded Feed Post Styles */
+.full-post {
+  padding: 15px;
+  background-color: #f9feff;
+  border-top: 1px solid #e0f4ff;
+  transition: max-height 0.3s ease;
+}
+
+.full-post p,
+.full-post ul,
+.full-post h4 {
+  margin-bottom: 10px;
+}
+
+.full-post ul li {
+  margin-left: 20px;
+}
+
+.images-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.images-container img {
+  max-width: 30%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.images-container img:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .feeds-wrapper {
+    flex-direction: column-reverse;
   }
-  
-  .medical-feeds-container h2 {
-    color: #398fff;
-    text-align: center;
-    margin: 10px 10px 20px;
-  }
-  
+
+  .active-feed-container,
   .feeds-list {
     width: 100%;
   }
-  
-  .feed-item {
-    border: 1px solid #ccc;
-    border-radius: 8px;
+
+  .feeds-list {
+    order: 1;
+  }
+
+  .active-feed-container {
+    order: 2;
+    margin-right: 0;
     margin-bottom: 20px;
-    overflow: hidden;
   }
-  
-  .feed-preview {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    cursor: pointer;
-  }
-  
-  .feed-image {
-    width: 120px;
-    height: 120px;
-    overflow: hidden;
-    border-radius: 8px;
-    margin-right: 15px;
-  }
-  
-  .feed-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .feed-content {
-    flex: 1;
-  }
-  
-  .feed-title {
-    font-size: 18px;
-    color: #333333;
-    margin-bottom: 8px;
-  }
-  
-  .feed-description {
-    font-size: 14px;
-    color: #666666;
-  }
-  
-  .full-post {
-    padding: 15px;
-    background-color: #f9feff;
-    border-top: 1px solid #ccc;
-  }
-  
-  .full-post p,
-  .full-post ul,
-  .full-post h4 {
-    margin-bottom: 10px;
-  }
-  .full-post ul li{
-    margin-left: 20px;
-  }
-  .images-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-  }
-  
-  .images-container img {
-    max-width: 30%;
-    border-radius: 8px;
-  }
-  
+}
