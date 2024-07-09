@@ -5,6 +5,7 @@ Under Development.. ⏳
 This is a HMS(Healthcare Management System ) like all others but what sets this apart from other is the the ease of access and many more features which are yet to be developed.😎
 
 The current progress of the project will be updated here timely ⌛
+Deployed Link :- https://doc-plus.vercel.app/
 
 # Preview
 
