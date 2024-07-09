@@ -6,10 +6,10 @@ import authRoute from './routes/auth.js';
 import patientRoute from './routes/patient.route.js';
 import pdinteractionRoute from './routes/pdinteraction.route.js';
 import doctorRoute from './routes/doctor.route.js';
-import hospitalRoute from './routes/hospital.route.js'
+import hospitalRoute from './routes/hospital.route.js';
 import { upload } from './middlewares/multer.middleware.js';
 import bodyParser from 'body-parser';
-
+import path from 'path'; // Import path module for handling file paths
 
 const app = express();
 dotenv.config();
@@ -27,7 +27,7 @@ const connectDB = async () => {
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser. text({type: '/'}));
+app.use(bodyParser.text({ type: '/' })); // Assuming you intended bodyParser for parsing text
 
 // Routes
 app.use('/auth', authRoute);
@@ -35,6 +35,15 @@ app.use('/backend/patients', patientRoute);
 app.use('/backend/pdinteraction', pdinteractionRoute);
 app.use('/backend/doctors', doctorRoute);
 app.use('/backend/hospitals', hospitalRoute);
+
+// Serve static files from the React frontend build
+const __dirname = path.resolve(); // Define the absolute path to the root directory
+app.use(express.static(path.join(__dirname, 'client', 'build')));
+
+// Handle other routes by serving the React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {

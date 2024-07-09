@@ -71,7 +71,7 @@ function Createdoctor() {
             formData.append('work_experience', JSON.stringify(doctor.work_experience));
             formData.append('firebaseUid', doctor.firebaseUid);
     
-            await axios.post('http://localhost:8000/backend/doctors', formData, {
+            await axios.post('https://doc-plus.onrender.com/backend/doctors', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

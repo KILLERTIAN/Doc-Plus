@@ -73,7 +73,7 @@ function Createpatient() {
       formData.append('avatar', patient.avatar);
       formData.append('firebaseUid', patient.firebaseUid);
 
-      await axios.post('http://localhost:8000/backend/patients', formData, {
+      await axios.post('https://doc-plus.onrender.com/backend/patients', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

@@ -46,12 +46,12 @@ function Navbar() {
           let endpointUrl = '';
 
           if (currentUser.displayName === 'doctor') {
-            endpointUrl = `http://localhost:8000/backend/doctors?firebaseUid=${firebaseUid}`;
+            endpointUrl = `https://doc-plus.onrender.com/backend/doctors?firebaseUid=${firebaseUid}`;
           } else if (currentUser.displayName === 'citizen') {
-            endpointUrl = `http://localhost:8000/backend/patients?firebaseUid=${firebaseUid}`;
+            endpointUrl = `https://doc-plus.onrender.com/backend/patients?firebaseUid=${firebaseUid}`;
           }
           else if (currentUser.displayName === 'hospital') {
-            endpointUrl = `http://localhost:8000/backend/hospitals?firebaseUid=${firebaseUid}`;
+            endpointUrl = `https://doc-plus.onrender.com/backend/hospitals?firebaseUid=${firebaseUid}`;
           }
           else {
             console.error('Invalid user role:', currentUser.displayName);

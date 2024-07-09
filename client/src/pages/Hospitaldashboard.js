@@ -20,7 +20,7 @@ function Hospitaldashboard() {
 
   const fetchData = async (firebaseUid) => {
     try {
-      const hospitalResponse = await axios.get(`http://localhost:8000/backend/hospitals?firebaseUid=${firebaseUid}`);
+      const hospitalResponse = await axios.get(`https://doc-plus.onrender.com/backend/hospitals?firebaseUid=${firebaseUid}`);
       const currentHospital = hospitalResponse.data[0]; 
       setHospital(currentHospital);
       setLoading(false);

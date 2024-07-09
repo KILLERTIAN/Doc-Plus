@@ -64,7 +64,7 @@ function CreateHospital() {
       const contactObj = { phone, email };
       formData.append('contact', JSON.stringify(contactObj));
 
-      const response = await axios.post('http://localhost:8000/backend/hospitals', formData, {
+      const response = await axios.post('https://doc-plus.onrender.com/backend/hospitals', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

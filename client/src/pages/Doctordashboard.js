@@ -19,13 +19,13 @@ function DoctorDashboard() {
   const fetchData = async (firebaseUid) => {
     try {
       // Fetch doctor data
-      const doctorResponse = await axios.get(`http://localhost:8000/backend/doctors?firebaseUid=${firebaseUid}`);
+      const doctorResponse = await axios.get(`https://doc-plus.onrender.com/backend/doctors?firebaseUid=${firebaseUid}`);
       const currentDoctor = doctorResponse.data[0];
       console.log('Doctor Response:', currentDoctor);
       setDoctor(currentDoctor);
 
       // Fetch patient interactions data for the current doctor
-      const interactionsResponse = await axios.get(`http://localhost:8000/backend/pdinteraction?doctorId=${currentDoctor.d_id}`);
+      const interactionsResponse = await axios.get(`https://doc-plus.onrender.com/backend/pdinteraction?doctorId=${currentDoctor.d_id}`);
       const interactionsData = interactionsResponse.data;
       console.log('Interactions Response:', interactionsData);
       setPatientInteractions(interactionsData);

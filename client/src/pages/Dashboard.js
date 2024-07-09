@@ -47,18 +47,18 @@ function Dashboard() {
 
   const fetchData = async (firebaseUid) => {
     try {
-      const patientResponse = await axios.get(`http://localhost:8000/backend/patients?firebaseUid=${firebaseUid}`);
+      const patientResponse = await axios.get(`https://doc-plus.onrender.com/backend/patients?firebaseUid=${firebaseUid}`);
       const currentPatient = patientResponse.data[0];
       setPatient(currentPatient);
 
-      const interactionsResponse = await axios.get(`http://localhost:8000/backend/pdinteraction?patientId=${currentPatient.p_id}`);
+      const interactionsResponse = await axios.get(`https://doc-plus.onrender.com/backend/pdinteraction?patientId=${currentPatient.p_id}`);
       const interactionsData = interactionsResponse.data;
       setInteractions(interactionsData);
 
       // Store interactions data in local storage
       localStorage.setItem('interactions', JSON.stringify(interactionsData));
 
-      const doctorsResponse = await axios.get('http://localhost:8000/backend/doctors');
+      const doctorsResponse = await axios.get('https://doc-plus.onrender.com/backend/doctors');
       setDoctors(doctorsResponse.data);
 
       // Calculate ongoing treatments
