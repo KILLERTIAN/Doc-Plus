@@ -9,15 +9,22 @@ import doctorRoute from './routes/doctor.route.js';
 import hospitalRoute from './routes/hospital.route.js';
 import { upload } from './middlewares/multer.middleware.js';
 import bodyParser from 'body-parser';
-import path from 'path'; // Import path module for handling file paths
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+dotenv.config();
 
 const app = express();
-dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // MongoDB Connection
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO);
+    await mongoose.connect(process.env.MONGO, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     console.log('Connected to MongoDB');
   } catch (error) {
     console.error('Error connecting to MongoDB:', error);
@@ -27,7 +34,7 @@ const connectDB = async () => {
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser.text({ type: '/' })); // Assuming you intended bodyParser for parsing text
+app.use(bodyParser.text({ type: '/' }));
 
 // Routes
 app.use('/auth', authRoute);
@@ -37,7 +44,6 @@ app.use('/backend/doctors', doctorRoute);
 app.use('/backend/hospitals', hospitalRoute);
 
 // Serve static files from the React frontend build
-const __dirname = path.resolve(); // Define the absolute path to the root directory
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 // Handle other routes by serving the React app
@@ -54,7 +60,8 @@ app.use((err, req, res, next) => {
 
 // Start Server
 const PORT = process.env.PORT || 8000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-  connectDB();
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
 });
