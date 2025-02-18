@@ -3,6 +3,7 @@ import HeroSection from './HeroSection';
 import Appointment from './Appointment';
 import Medicalreminder from './Medicalreminder';
 import MedicalFeeds from './MedicalFeeds';
+import { OurFamily } from './OurFamily';
 
 
 function Home() {
@@ -12,7 +13,8 @@ function Home() {
             <HeroSection/>
             <Appointment/>
             <Medicalreminder/>
-            <MedicalFeeds/>
+            {/* <MedicalFeeds/> */}
+            <OurFamily/>
         </div>
     </div>
   )

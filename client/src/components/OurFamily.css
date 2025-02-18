@@ -1,0 +1,49 @@
+.ourFamilyMainContainer {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: var(--maine-background, linear-gradient(81deg, #E7F0FF 9.01%, rgba(232, 241, 255, 0.47) 89.11%));
+}
+
+.ourFamilyTextContainer {
+    padding: 10px;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    margin-left: 50px;
+}
+
+.ourFamilySpan {
+    font-size: 0.8em;
+    color: #2AA7FF;
+    font-weight: 600;
+}
+
+.ourFamilyH1 {
+    font-size: 2.2em;
+    color: #1B3C74;
+}
+
+.ourFamilyPara {
+    color: #77829D;
+    font-size: 1.0625rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 240%;
+}
+
+.ourFamilyBoxesContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 100%; */
+}
+.ourFamilyImage{
+    width: 80%;
+}
