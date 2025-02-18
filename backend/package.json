@@ -1,7 +1,13 @@
 {
   "type": "module",
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "echo 'No build step necessary for backend'",
+    "vercel-build": "npm run build"
   },
   "dependencies": {
     "cloudinary": "^2.0.3",
@@ -11,7 +17,12 @@
     "mongodb": "^6.5.0",
     "mongoose": "^8.2.3",
     "multer": "^1.4.5-lts.1",
-    "nodemon": "^3.1.0",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
