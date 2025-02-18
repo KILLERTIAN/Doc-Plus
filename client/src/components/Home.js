@@ -5,6 +5,7 @@ import Medicalreminder from './Medicalreminder';
 import MedicalFeeds from './MedicalFeeds';
 import Medicalposts from './Medicalposts.js';
 import { OurFamily } from './OurFamily';
+import ScrollToTop from './ScrollToTop.js';
 
 
 function Home() {
@@ -17,6 +18,7 @@ function Home() {
             {/* <MedicalFeeds/> */}
             <Medicalposts/>
             <OurFamily/>
+            <ScrollToTop/>
         </div>
     </div>
   )

@@ -1,69 +1,84 @@
 .medical-reminder-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
-  }
-  
-  .medical-reminder-container h2 {
-    margin: 10px 10px 20px;
-    color: #398fff;
-  }
-  
-  .reminderContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .reminder-card {
-    display: flex;
-    margin: 0px 15px;
-    flex-direction: column;
-    padding: 15px;
-    border-radius: 8px;
-    background-color: #c5efff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  }
-  
-  .reminder-card.completed {
-    box-shadow: 0 2px 8px rgba(0, 128, 0, 0.3);
-  }
-  
-  .medicine-name {
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .dosage,
-  .time {
-    font-size: 14px;
-    color: #666;
-    margin-top: 8px;
-  }
-  
-  .completion-icon {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    align-self: flex-end;
-    justify-content: center;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-  
-  .completion-icon:hover {
-    transform: scale(1.05);
-  }
-  .completion-icon span{
-    color: #30b30f;
-    margin: 0px 10px;
-  }
-  .completion-icon ion-icon {
-    font-size: 24px; /* Increase the font size for IonIcon */
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.medical-reminder-container h2 {
+  color: #1E3A8A;
+  font-size: 2.2em;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.reminderContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.reminder-card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 280px;
+  border-radius: 12px;
+  background: #f9f9f9;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1),
+    -4px -4px 10px rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+.reminder-card.completed {
+  background: linear-gradient(135deg, #abecac, #81c784);
+  box-shadow: 0 4px 12px rgba(0, 128, 0, 0.3);
+}
+
+.medicine-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.dosage,
+.time {
+  font-size: 14px;
+  color: #666;
+  margin-top: 6px;
+}
+
+.mark-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #398fff, #00c6ff);
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, background 0.3s ease-in-out;
+  margin-top: 15px;
+}
+
+.mark-btn:hover {
+  transform: scale(1.02);
+  background: linear-gradient(135deg, #007bff, #009eff);
+}
+
+.mark-btn.done {
+  background: linear-gradient(135deg, #2e7d32, #66bb6a);
+}
+
+.mark-btn.done:hover {
+  background: linear-gradient(135deg, #1b5e20, #43a047);
+}
+.mark-btn ion-icon {
+  font-size: 21px;
+}

@@ -1,49 +1,84 @@
-.mainAppointmentContainer{
+.mainAppointmentContainer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   width: 100%;
-  justify-content: space-evenly;
   padding: 20px;
-  flex-direction: column;
 }
-.mainAppointmentContainer h2{
-  margin:10px 10px 20px;
-  color: #398fff;
+
+.mainAppointmentContainer h2 {
+  color: #1E3A8A;
+  font-size: 2.2em;
+  margin-bottom: 20px;
+  font-weight: bold;
 }
+
 .calendar-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
+  width: 100%;
 }
 
-.calendar-item {
+.calendar-card {
   display: flex;
-  padding: 5px 15px;
-  margin: 0 15px;
-flex-direction: column;
-  /* border: 1.5px solid rgb(195, 199, 255); */
+  align-items: center;
+  background: #f9fafe;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
   padding: 15px;
-  border-radius: 8px;
-  background-color: #c5efff;
-  box-shadow: 0 2px 4px rgba(61, 52, 187, 0.1);
+  width: 280px;
+  transition: all 0.3s ease-in-out;
 }
 
-.calendar-date {
+.calendar-card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.10);
+}
+
+.calendar-date-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #398fff;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
   font-size: 16px;
   font-weight: bold;
-  color: #333;
+  width: 60px;
+  margin-right: 15px;
 }
 
-.calendar-time {
-  font-size: 14px;
-  margin-top: 8px;
+.date-number {
+  font-size: 22px;
 }
 
+.date-text {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.calendar-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-time,
 .calendar-location {
+  display: flex;
+  align-items: center;
   font-size: 14px;
-  margin-top: 8px;
-  color: #666;
+  color: #555;
+  margin-top: 6px;
+}
+
+.icon {
+  margin-right: 8px;
+  font-size: 18px;
+  color: #398fff;
 }
