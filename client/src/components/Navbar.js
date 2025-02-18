@@ -147,7 +147,7 @@ function Navbar() {
                 </li>
               )}
 
-              <li className={`nav-item ${selectedNavItem === 'documents' ? 'selected' : ''}`}>
+              {/* <li className={`nav-item ${selectedNavItem === 'documents' ? 'selected' : ''}`}>
                 <Link
                   to='/documents'
                   className='nav-links'
@@ -158,7 +158,7 @@ function Navbar() {
                 >
                   Documents
                 </Link>
-              </li>
+              </li> */}
             </>
           )}
 
