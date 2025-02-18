@@ -104,46 +104,64 @@ function Navbar() {
               Home
             </Link>
           </li>
-          {currentUser && currentUser.displayName === 'doctor' ? (
-            <li className={`nav-item ${selectedNavItem === 'doctor-dashboard' ? 'selected' : ''}`}>
-              <Link
-                to='/doctor-dashboard'
-                className='nav-links'
-                onClick={() => {
-                  closeMobileMenu();
-                  setSelectedNavItem('doctor-dashboard');
-                }}
-              >
-                Doctor Dashboard
-              </Link>
-            </li>
-          ) : currentUser && currentUser.displayName === 'hospital' ? (
-            <li className={`nav-item ${selectedNavItem === 'hospital-dashboard' ? 'selected' : ''}`}>
-              <Link
-                to='/hospital-dashboard'
-                className='nav-links'
-                onClick={() => {
-                  closeMobileMenu();
-                  setSelectedNavItem('hospital-dashboard');
-                }}
-              >
-                Hospital Dashboard
-              </Link>
-            </li>
-          ) : (
-            <li className={`nav-item ${selectedNavItem === 'dashboard' ? 'selected' : ''}`}>
-              <Link
-                to='/dashboard'
-                className='nav-links'
-                onClick={() => {
-                  closeMobileMenu();
-                  setSelectedNavItem('dashboard');
-                }}
-              >
-                Dashboard
-              </Link>
-            </li>
+          {currentUser && (
+            <>
+              {currentUser.displayName === 'doctor' ? (
+                <li className={`nav-item ${selectedNavItem === 'doctor-dashboard' ? 'selected' : ''}`}>
+                  <Link
+                    to='/doctor-dashboard'
+                    className='nav-links'
+                    onClick={() => {
+                      closeMobileMenu();
+                      setSelectedNavItem('doctor-dashboard');
+                    }}
+                  >
+                    Doctor Dashboard
+                  </Link>
+                </li>
+              ) : currentUser.displayName === 'hospital' ? (
+                <li className={`nav-item ${selectedNavItem === 'hospital-dashboard' ? 'selected' : ''}`}>
+                  <Link
+                    to='/hospital-dashboard'
+                    className='nav-links'
+                    onClick={() => {
+                      closeMobileMenu();
+                      setSelectedNavItem('hospital-dashboard');
+                    }}
+                  >
+                    Hospital Dashboard
+                  </Link>
+                </li>
+              ) : (
+                <li className={`nav-item ${selectedNavItem === 'dashboard' ? 'selected' : ''}`}>
+                  <Link
+                    to='/dashboard'
+                    className='nav-links'
+                    onClick={() => {
+                      closeMobileMenu();
+                      setSelectedNavItem('dashboard');
+                    }}
+                  >
+                    Dashboard
+                  </Link>
+                </li>
+              )}
+
+              <li className={`nav-item ${selectedNavItem === 'documents' ? 'selected' : ''}`}>
+                <Link
+                  to='/documents'
+                  className='nav-links'
+                  onClick={() => {
+                    closeMobileMenu();
+                    setSelectedNavItem('documents');
+                  }}
+                >
+                  Documents
+                </Link>
+              </li>
+            </>
           )}
+
 
           <li className={`nav-item ${selectedNavItem === 'documents' ? 'selected' : ''}`}>
             <Link
