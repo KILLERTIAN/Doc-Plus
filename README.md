@@ -6,7 +6,7 @@ This is a HMS(Healthcare Management System ) like all others but what sets this 
 
 The current progress of the project will be updated here timely ⌛
 
-Deployed Link :- https://doc-plus.vercel.app/
+Deployed Link :- https://doc-plus-blond.vercel.app/
 
 # Preview
 
